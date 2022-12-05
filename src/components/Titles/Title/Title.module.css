@@ -1,4 +1,10 @@
-.figure {
-    margin-top: 200px;
+
+
+.title {
+    color: aqua;
+}
+
+.figure img {
+    width: 200px;
 }
 
