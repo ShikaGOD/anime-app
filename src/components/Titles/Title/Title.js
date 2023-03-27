@@ -1,17 +1,15 @@
 import classes from "./Title.module.css";
-import Card from "../../../UI/Card";
-
 
 function Title(props) {
   return (
-    <Card>
-      <li>
-        <figure className={classes.figure}>
-          <img src={props.img} alt="naruto"/>
-          <figcaption className={classes.title}>{props.titleName}</figcaption>
-        </figure>
+      <li className={classes.title__container}>    
+          <div className={classes.title__card}>
+            <img src={props.image} alt={props.titleName}/>
+          </div>
+          <div>
+            <p>{props.titleName}</p>
+          </div>
       </li>
-    </Card>
   );
 }
 

@@ -1,15 +1,37 @@
-import "./App.css";
-import { Fragment } from "react";
-// import {Routes, Route} from 'react-router-dom'
-import MainNavigation from "./components/Layout/MainNavigation";
-import Titles from "./components/Titles/Titles";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "./components/Layout/Header";
+import RootLayout from "./pages/RootLayout";
+import HomePage from "./pages/HomePage";
+import Authentication from "./pages/Authentication";
+import MyProfile from "./pages/MyProfile";
+
+
+const router = createBrowserRouter([
+  { path: '/', 
+    element: <RootLayout />,
+    children: [
+      { path: '', element: <HomePage /> }
+    ] },
+
+    { path: 'auth', 
+    element: <>
+      <Header />
+      <Authentication />
+    </>
+    }, 
+
+    {
+      path: 'profile',
+      element: <>
+      <Header />
+      <MyProfile />
+    </>
+    }
+])
 
 function App() {
-  return (
-    <Fragment>
-      <MainNavigation></MainNavigation>
-      <Titles />
-    </Fragment>
+  return ( 
+      <RouterProvider router={router} />
   );
 }
 

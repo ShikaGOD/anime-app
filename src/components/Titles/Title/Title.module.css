@@ -1,10 +1,29 @@
-
-
-.title {
-    color: aqua;
+.title__container {
+    cursor: pointer;
+    list-style-type: none;
+    transition: all 0.3s ease-out;
 }
 
-.figure img {
-    width: 200px;
+.title__container:hover {
+    transform: scale(1.07);
+} 
+
+.title__card {
+    position: relative;
+    height: 25rem;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.3s ease-out;
+}
+
+.title__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 

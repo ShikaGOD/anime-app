@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4285F4;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+  margin: 0;
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+  text-shadow:
+  1px 1px 0px #000,
+  -1px -1px 0px #000,
+  1px -1px 0px #000,
+  -1px 1px 0px #000;
+}
+20% {
+  text-shadow: none;
+}
+55% {
+  text-shadow: none;
+}
+}
+
+.header div {
+  display: flex;
+  gap: 10px;
+}
+
+.header a {
+  text-decoration: none;
+}
+
+.header button {
+  background-color: #4285F4;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.header button:hover {
+  transform: scale(1.1);
+}
+
+.header button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #FFF, 0 0 0 4px #4285F4;
+}
