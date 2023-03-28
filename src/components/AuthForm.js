@@ -5,13 +5,17 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
+import { getAuth } from "firebase/auth";
 
 function RegistrationForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get('mode') === 'login';
 
@@ -33,23 +37,26 @@ function RegistrationForm() {
           // ..
       });
     }
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     const onLoginHandler = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+        .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/profile")
           console.log(user);
-      })
-      .catch((error) => {
+          dispatch(login());
+          navigate("/profile");
+        })
+        .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage)
-      });
-      dispatch(login())
-    }
+          console.log(errorCode, errorMessage);
+        });
+    };
+    
 
   return (
     <div className={classes.container}>

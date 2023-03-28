@@ -3,7 +3,6 @@ import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
-import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 function Header() {
