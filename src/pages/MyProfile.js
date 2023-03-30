@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 
 function MyProfile() {
   const plannedAnime = useSelector((state) => state.plannedAnime );
-  const watchedAnime = useSelector((state) => state.plannedAnime );
-  const postponedAnime = useSelector((state) => state.plannedAnime );
-  
+  const watchedAnime = useSelector((state) => state.watchedAnime );
+  const postponedAnime = useSelector((state) => state.postponedAnime );
+
   console.log(plannedAnime);
+  console.log(watchedAnime);
+  console.log(postponedAnime);
   
 
   return (

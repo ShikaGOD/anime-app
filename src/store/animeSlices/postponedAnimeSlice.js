@@ -16,7 +16,13 @@ const postponedAnimeSlice = createSlice({
         totalEpisodes: 25,
       },
     ],    
-
+    reducers: {
+      addToPostponed(state, action) {
+          state.push(action.payload);
+      }
+  }
 })
+
+export const { addToPostponed } = postponedAnimeSlice.actions
 
 export default postponedAnimeSlice.reducer

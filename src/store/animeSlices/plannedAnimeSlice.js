@@ -16,7 +16,13 @@ const plannedAnimeSlice = createSlice({
           totalEpisodes: 220,
         },
       ],    
-
+    reducers: {
+        addToPlanned(state, action) {
+            state.push(action.payload);
+        }
+    }
 })
+
+export const { addToPlanned } = plannedAnimeSlice.actions
 
 export default plannedAnimeSlice.reducer

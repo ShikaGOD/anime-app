@@ -16,7 +16,13 @@ const watchedAnimeSlice = createSlice({
         totalEpisodes: 64,
       },
     ],    
-
+    reducers: {
+      addToWatched(state, action) {
+          state.push(action.payload);
+      }
+  }
 })
+
+export const { addToWatched } = watchedAnimeSlice.actions
 
 export default watchedAnimeSlice.reducer
