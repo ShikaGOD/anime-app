@@ -1,16 +1,60 @@
-.myprofile {
-  color: #333;
-  font-size: 2rem;
-  text-align: center;
-  margin: 2rem 0;
+/* .container {
+  margin-top: 64px;
+  margin-left: 128px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.container h1 {
+  text-align: center;
+  border-style: inset;
+  border-color: aqua;
+}
+
+.container ol,
+.container h2
+{
+  margin-top: 32px;
+  margin-left: 128px;
+}
+ */
+
+ .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+ol {
   margin: 0;
+  padding: 0;
 }
 
 li {
-  margin: 1rem 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
 }
+
+li span {
+  font-weight: bold;
+  color: #666;
+}
+

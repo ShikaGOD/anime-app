@@ -1,82 +1,45 @@
 import React from 'react';
 import classes from "./MyProfile.module.css"
+import { useSelector } from 'react-redux';
 
 function MyProfile() {
-  const watchedAnime = [
-    {
-      id: 1,
-      title: 'Attack on Titan',
-      episodesWatched: 25,
-      totalEpisodes: 25,
-    },
-    {
-      id: 2,
-      title: 'Fullmetal Alchemist: Brotherhood',
-      episodesWatched: 64,
-      totalEpisodes: 64,
-    },
-  ];
-
-  const plannedAnime = [
-    {
-      id: 3,
-      title: 'One Punch Man',
-      episodesWatched: 0,
-      totalEpisodes: 12,
-    },
-    {
-      id: 4,
-      title: 'Naruto',
-      episodesWatched: 0,
-      totalEpisodes: 220,
-    },
-  ];
-
-  const postponedAnime = [
-    {
-      id: 5,
-      title: 'Death Note',
-      episodesWatched: 10,
-      totalEpisodes: 37,
-    },
-    {
-      id: 6,
-      title: 'Sword Art Online',
-      episodesWatched: 5,
-      totalEpisodes: 25,
-    },
-  ];
+  const plannedAnime = useSelector((state) => state.plannedAnime );
+  const watchedAnime = useSelector((state) => state.plannedAnime );
+  const postponedAnime = useSelector((state) => state.plannedAnime );
+  
+  console.log(plannedAnime);
+  
 
   return (
-    <div>
-      <h2 className={classes.myprofile}>My Profile</h2>
+    <div className={classes.container}>
+      <h1>My Profile</h1>
 
-      <h3>Watched Anime</h3>
-      <ul>
+      <h2>Watched Anime</h2>
+      <ol>
         {watchedAnime.map(anime => (
           <li key={anime.id}>
             {anime.title} ({anime.episodesWatched}/{anime.totalEpisodes})
           </li>
         ))}
-      </ul>
+      </ol>
 
-      <h3>Planned Anime</h3>
-      <ul>
+      <h2>Planned Anime</h2>
+      <ol>
         {plannedAnime.map(anime => (
           <li key={anime.id}>
             {anime.title} ({anime.episodesWatched}/{anime.totalEpisodes})
           </li>
         ))}
-      </ul>
+      </ol>
 
-      <h3>Postponed Anime</h3>
-      <ul>
+      <h2>Postponed Anime</h2>
+      <ol>
         {postponedAnime.map(anime => (
           <li key={anime.id}>
             {anime.title} ({anime.episodesWatched}/{anime.totalEpisodes})
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }

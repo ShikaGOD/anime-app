@@ -11,11 +11,8 @@ function RegistrationForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  
-  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
-  const [currentUser, setCurrentUser] = useState(null);
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get('mode') === 'login';
 
