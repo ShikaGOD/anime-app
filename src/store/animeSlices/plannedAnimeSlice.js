@@ -19,10 +19,17 @@ const plannedAnimeSlice = createSlice({
     reducers: {
         addToPlanned(state, action) {
             state.push(action.payload);
+        },
+        updatePlannedAnime(state, action) {
+          const { id, episodesWatched } = action.payload;
+          const anime = state.find(a => a.id === id);
+          if (anime) {
+            anime.episodesWatched = episodesWatched;
+          }
         }
     }
 })
 
-export const { addToPlanned } = plannedAnimeSlice.actions
+export const { addToPlanned, updatePlannedAnime } = plannedAnimeSlice.actions
 
 export default plannedAnimeSlice.reducer

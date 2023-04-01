@@ -1,30 +1,66 @@
-/* .container {
-  margin-top: 64px;
-  margin-left: 128px;
-}
-
-.container h1 {
-  text-align: center;
-  border-style: inset;
-  border-color: aqua;
-}
-
-.container ol,
-.container h2
-{
-  margin-top: 32px;
-  margin-left: 128px;
-}
- */
-
- .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.container {
+  max-width: 100%;
+  margin: 5px ;
+  font-size: 20px;
+  background-color: #669ef8;
+  border: 10px solid #4782e2;
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  padding: 0.75rem 3rem;
+  background-color: #669ef8;
+  color: white;
+}
+
+.container button:hover,
+.container button:active {
+  background-color: #4782e2;
+}
+
+.buttonContainer {
+  width: 100%;
+  border-bottom: 5px solid #4782e2;
+}
+
+.animeList {
+  padding: 24px;
+}
+
+.animeList li {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 12px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.episodesWatched {
+  text-align: right;
+}
+
+input[type="number"] {
+  appearance: none; /* відключає відображення стандартного вигляду стрілочок */
+  -moz-appearance: textfield;
+  width: 60px; 
+  padding: 0px;
+  border: 1px solid #4285F4; 
+  border-radius: 5px; 
+  text-align: center; 
+  font-size: 1em; 
+  /* font-weight: 500; */
+  outline: #4285F4;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* відключає відображення стандартного вигляду стрілочок у WebKit */
+  margin: 0; /* відключає відображення маргінів для стрілочок */
 }
 
 h1 {
@@ -34,27 +70,8 @@ h1 {
   color: #333;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-ol {
-  margin: 0;
-  padding: 0;
-}
-
 li {
   margin-bottom: 10px;
   font-size: 18px;
   color: #333;
 }
-
-li span {
-  font-weight: bold;
-  color: #666;
-}
-
