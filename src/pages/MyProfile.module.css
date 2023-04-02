@@ -6,6 +6,7 @@
   border: 10px solid #4782e2;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
 
 .container button {
@@ -15,10 +16,11 @@
   padding: 0.75rem 3rem;
   background-color: #669ef8;
   color: white;
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
 
 .container button:hover,
-.container button:active {
+.container button:focus {
   background-color: #4782e2;
 }
 
@@ -31,36 +33,43 @@
   padding: 24px;
 }
 
-.animeList li {
-  display: flex;
-  justify-content: space-between;
+.animeList thead tr {
+  gap: 70px;
+  text-align: left;
+}
+
+.animeList tr {
+  display: grid;
+  grid-template-columns: 20fr 1fr 1fr;
+  gap: 52px;
   padding: 24px 12px;
+  
   font-size: 1em;
   font-weight: bold;
   color: #ffffff;
 }
 
-.episodesWatched {
-  text-align: right;
+.scoreInput {
+  margin-left: -20px;
 }
 
+
 input[type="number"] {
-  appearance: none; /* відключає відображення стандартного вигляду стрілочок */
+  appearance: none; 
   -moz-appearance: textfield;
-  width: 60px; 
+  width: 60px;
   padding: 0px;
   border: 1px solid #4285F4; 
   border-radius: 5px; 
   text-align: center; 
   font-size: 1em; 
-  /* font-weight: 500; */
   outline: #4285F4;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none; /* відключає відображення стандартного вигляду стрілочок у WebKit */
-  margin: 0; /* відключає відображення маргінів для стрілочок */
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 h1 {
@@ -75,3 +84,6 @@ li {
   font-size: 18px;
   color: #333;
 }
+
+
+

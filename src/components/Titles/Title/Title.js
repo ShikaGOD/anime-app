@@ -50,13 +50,13 @@ function Title(props) {
           {showDropdown && (
             <ul className={classes.dropdownMenu}>
               <li onClick={() => dropdownItemHandler("watched")}>
-                + Watched Anime
+                + Watched
               </li>
               <li onClick={() => dropdownItemHandler("planned")}>
-                +Planned Anime
+                +Planned
               </li>
               <li onClick={() => dropdownItemHandler("postponed")}>
-              + Postponed Anime
+              + Postponed
               </li>
             </ul>
           )}

@@ -5,15 +5,17 @@ const plannedAnimeSlice = createSlice({
     initialState: [
         {
           id: 3,
-          title: 'One Punch Man',
+          title: '91 days',
           episodesWatched: 0,
           totalEpisodes: 12,
+          score: "-"
         },
         {
           id: 4,
           title: 'Naruto',
           episodesWatched: 0,
           totalEpisodes: 220,
+          score: "-"
         },
       ],    
     reducers: {
@@ -21,10 +23,11 @@ const plannedAnimeSlice = createSlice({
             state.push(action.payload);
         },
         updatePlannedAnime(state, action) {
-          const { id, episodesWatched } = action.payload;
+          const { id, episodesWatched, score } = action.payload;
           const anime = state.find(a => a.id === id);
           if (anime) {
             anime.episodesWatched = episodesWatched;
+            anime.score = score;
           }
         }
     }

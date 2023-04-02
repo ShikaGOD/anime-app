@@ -8,12 +8,14 @@ const postponedAnimeSlice = createSlice({
         title: 'Death Note',
         episodesWatched: 0,
         totalEpisodes: 37,
+        score: "-"
       },
       {
         id: 6,
         title: 'Sword Art Online',
         episodesWatched: 0,
         totalEpisodes: 25,
+        score: "-"
       },
     ],    
     reducers: {
@@ -21,10 +23,11 @@ const postponedAnimeSlice = createSlice({
           state.push(action.payload);
       },
       updatePostponedAnime(state, action) {
-        const { id, episodesWatched } = action.payload;
+        const { id, episodesWatched, score } = action.payload;
         const anime = state.find(a => a.id === id);
         if (anime) {
           anime.episodesWatched = episodesWatched;
+          anime.score = score;
         }
       }
   }
