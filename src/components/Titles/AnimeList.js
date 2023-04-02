@@ -1,45 +1,19 @@
 import { useEffect, useState } from 'react'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAnimeList } from '../../store/animeSlice';
 import Title from "./Title/Title";
 import classes from "./AnimeList.module.css";
 
 
 function AnimeList() {
-  const [titles, setTitles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const titles = useSelector(state => state.anime.animeTitles);
+  const isLoading = useSelector(state => state.anime.isLoading);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
-    const fetchTitles = async () => {
-      const response = await fetch(
-        'https://api.jikan.moe/v4/top/anime?filter=bypopularity&limit=100'
-      );
-
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-
-      const responseData = await response.json();
-      const { data } = responseData;
-      
-      // Отримання властивостей з об'єкту "data"
-      // const titles = data.map(anime => ({title: anime.title, mal_id: anime.mal_id}));
-      setTitles( data );
-      setIsLoading(false);
-    };
-    
-    fetchTitles().catch((error) => {
-      setIsLoading(false);
-    });
-  }, []);
-  console.log(titles);
-
-  if (isLoading) {
-    return (
-      <section className={classes.animeSpinner}>
-        <div className={classes.spinner} />
-      </section>
-    );
-  }
+    dispatch(fetchAnimeList());
+  }, [dispatch]);
   
   const animeList = titles.map((title) => (
       <Title
@@ -51,10 +25,15 @@ function AnimeList() {
       />
   ));
   return (
-      <section>
+    <section>
+      {isLoading ? (
+        <section className={classes.animeSpinner}>
+          <div className={classes.spinner} />
+        </section>
+      ) : (
         <ul className={classes.container}>{animeList}</ul>
-      </section>
-   
+      )}
+    </section>
   );
 }
 
