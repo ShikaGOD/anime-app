@@ -11,7 +11,7 @@ export const fetchAnimeList = createAsyncThunk(
     }
     const responseData = await response.json();
     const { data } = responseData;
-    // console.log(data);
+    console.log(data);
     return data;
   }
 );

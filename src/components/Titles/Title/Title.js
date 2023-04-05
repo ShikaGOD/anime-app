@@ -17,13 +17,13 @@ function Title(props) {
   const dropdownItemHandler = (list) => {
     switch (list) {
       case "watched":
-        dispatch(addToWatched({id: props.id, title: props.titleName}));
+        dispatch(addToWatched({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       case "planned":
-        dispatch(addToPlanned({id: props.id, title: props.titleName}));
+        dispatch(addToPlanned({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       case "postponed":
-        dispatch(addToPostponed({id: props.id, title: props.titleName}));
+        dispatch(addToPostponed({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       default:
         break;

@@ -2,22 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const plannedAnimeSlice = createSlice({
     name: 'plannedAnime',
-    initialState: [
-        {
-          id: 3,
-          title: '91 days',
-          episodesWatched: 0,
-          totalEpisodes: 12,
-          score: "-"
-        },
-        {
-          id: 4,
-          title: 'Naruto',
-          episodesWatched: 0,
-          totalEpisodes: 220,
-          score: "-"
-        },
-      ],    
+    initialState: [],    
     reducers: {
         addToPlanned(state, action) {
             state.push(action.payload);

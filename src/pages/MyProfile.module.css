@@ -43,10 +43,30 @@
   grid-template-columns: 20fr 1fr 1fr;
   gap: 52px;
   padding: 24px 12px;
-  
   font-size: 1em;
   font-weight: bold;
   color: #ffffff;
+}
+
+.tbody {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 116%;
+}
+
+.tbody td:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.tbody td:first-child span {
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.animeImage {
+  height: 100px;
 }
 
 .scoreInput {
@@ -84,6 +104,3 @@ li {
   font-size: 18px;
   color: #333;
 }
-
-
-

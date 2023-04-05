@@ -2,22 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const watchedAnimeSlice = createSlice({
     name: 'watchedAnime',
-    initialState: [
-      {
-        id: 1,
-        title: 'Attack on Titan',
-        episodesWatched: 25,
-        totalEpisodes: 25,
-        score: "-"
-      },
-      {
-        id: 2,
-        title: 'Fullmetal Alchemist: Brotherhood',
-        episodesWatched: 64,
-        totalEpisodes: 64,
-        score: "-"
-      },
-    ],    
+    initialState: [],    
     reducers: {
       addToWatched(state, action) {
           state.push(action.payload);

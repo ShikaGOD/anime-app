@@ -93,7 +93,11 @@ function MyProfile() {
           <tbody>
             {activeAnimeList.map(anime => (
               <tr key={anime.id}>
-                <td>{anime.title}</td>
+              <div className={classes.tbody}>
+                <td>                 
+                    <img src={anime.image} alt={anime.title} className={classes.animeImage} />
+                    <span>{anime.title}</span>                                                      
+                </td>
                   <td>
                     {editScoreId === anime.id ? (
                       <input
@@ -121,7 +125,7 @@ function MyProfile() {
                       type="number"
                       value={anime.episodesWatched}
                       min={0}
-                      max={anime.totalEpisodes}
+                      max={anime.episodes}
                       onChange={(event) => onInputHandler(event, anime)}
                       onMouseLeave={() => setEditEpisodesId(null)}
                       onFocus={(e) => e.target.select()}
@@ -131,10 +135,11 @@ function MyProfile() {
                       className={classes.episodesWatched}
                       onMouseEnter={() => setEditEpisodesId(anime.id)}
                     >
-                      {anime.episodesWatched} / {anime.totalEpisodes}
+                      0 / {anime.episodes}
                     </span>
                   )}
                 </td>
+              </div>
               </tr>
             ))}
           </tbody>
