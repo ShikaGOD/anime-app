@@ -53,7 +53,7 @@ function Title(props) {
                 + Watched
               </li>
               <li onClick={() => dropdownItemHandler("planned")}>
-                +Planned
+                + Planned
               </li>
               <li onClick={() => dropdownItemHandler("postponed")}>
               + Postponed

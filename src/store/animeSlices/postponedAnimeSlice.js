@@ -5,7 +5,15 @@ const postponedAnimeSlice = createSlice({
     initialState: [],    
     reducers: {
       addToPostponed(state, action) {
-          state.push(action.payload);
+        const { id, title, image, episodes } = action.payload;
+        state.push({
+            id,
+            title,
+            image,
+            episodes,
+            episodesWatched: 0,
+            score: "-"
+        });
       },
       updatePostponedAnime(state, action) {
         const { id, episodesWatched, score } = action.payload;

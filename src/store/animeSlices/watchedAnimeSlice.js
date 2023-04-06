@@ -5,7 +5,15 @@ const watchedAnimeSlice = createSlice({
     initialState: [],    
     reducers: {
       addToWatched(state, action) {
-          state.push(action.payload);
+        const { id, title, image, episodes } = action.payload;
+        state.push({
+            id,
+            title,
+            image,
+            episodes,
+            episodesWatched: 0,
+            score: "-"
+        });
       },
       updateWatchedAnime(state, action) {
         const { id, episodesWatched, score } = action.payload;

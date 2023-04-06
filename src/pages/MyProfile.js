@@ -90,10 +90,9 @@ function MyProfile() {
               <th>Episodes</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={classes.tbody}>
             {activeAnimeList.map(anime => (
-              <tr key={anime.id}>
-              <div className={classes.tbody}>
+              <tr key={anime.id} >              
                 <td>                 
                     <img src={anime.image} alt={anime.title} className={classes.animeImage} />
                     <span>{anime.title}</span>                                                      
@@ -135,11 +134,10 @@ function MyProfile() {
                       className={classes.episodesWatched}
                       onMouseEnter={() => setEditEpisodesId(anime.id)}
                     >
-                      0 / {anime.episodes}
+                      {anime.episodesWatched} / {anime.episodes}
                     </span>
                   )}
-                </td>
-              </div>
+                </td>              
               </tr>
             ))}
           </tbody>

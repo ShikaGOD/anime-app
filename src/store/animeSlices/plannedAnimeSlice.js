@@ -4,17 +4,25 @@ const plannedAnimeSlice = createSlice({
     name: 'plannedAnime',
     initialState: [],    
     reducers: {
-        addToPlanned(state, action) {
-            state.push(action.payload);
-        },
-        updatePlannedAnime(state, action) {
-          const { id, episodesWatched, score } = action.payload;
-          const anime = state.find(a => a.id === id);
-          if (anime) {
-            anime.episodesWatched = episodesWatched;
-            anime.score = score;
-          }
-        }
+      addToPlanned(state, action) {
+        const { id, title, image, episodes } = action.payload;
+        state.push({
+            id,
+            title,
+            image,
+            episodes,
+            episodesWatched: 0,
+            score: "-"
+        });
+    },
+    updatePlannedAnime(state, action) {
+      const { id, episodesWatched, score } = action.payload;
+      const anime = state.find(a => a.id === id);
+      if (anime) {
+        anime.episodesWatched = episodesWatched;
+        anime.score = score;
+      }
+    }
     }
 })
 

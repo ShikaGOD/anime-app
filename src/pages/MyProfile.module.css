@@ -34,7 +34,7 @@
 }
 
 .animeList thead tr {
-  gap: 70px;
+  gap: 52px;
   text-align: left;
 }
 
@@ -48,11 +48,13 @@
   color: #ffffff;
 }
 
-.tbody {
-  display: flex;
-  justify-content: space-between; 
+.tbody tr {
+  display: grid;
+  grid-template-columns: 20fr 1fr 1fr;
+  gap: 52px;
+  padding: 24px 12px;
+  font-size: 1em;
   align-items: center;
-  width: 116%;
 }
 
 .tbody td:first-child {
