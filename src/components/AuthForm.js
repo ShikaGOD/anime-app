@@ -8,23 +8,29 @@ import { login } from "../store/authSlice";
 import { getAuth } from "firebase/auth";
 
 function RegistrationForm() {
+  console.log('rerender');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('');
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get('mode') === 'login';
 
-  const onSubmitHandler = async (e) => {
+  const onSignUpHandler = async (e) => {
     e.preventDefault()
+
+    if (email.trim() == '') {
+      return
+    }
    
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/auth?mode=login")
+          // navigate("/auth?mode=login")
           // ...
       })
       .catch((error) => {
@@ -89,7 +95,7 @@ function RegistrationForm() {
         )}
 
         {!isLogin ? (
-          <button type="submit" onClick={onSubmitHandler}>Sign Up</button>
+          <button type="submit" onClick={onSignUpHandler}>Sign Up</button>
         ) : (
           <button type="submit" onClick={onLoginHandler}>Login</button>
         )}

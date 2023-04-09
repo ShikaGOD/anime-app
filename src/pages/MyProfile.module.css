@@ -52,7 +52,6 @@
   display: grid;
   grid-template-columns: 20fr 1fr 1fr;
   gap: 52px;
-  padding: 24px 12px;
   font-size: 1em;
   align-items: center;
 }
