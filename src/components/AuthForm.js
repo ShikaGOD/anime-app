@@ -1,5 +1,6 @@
 import classes from "./AuthForm.module.css";
 import { useState } from "react";
+import useInput from "./hooks/use-input";
 import { Form, Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
@@ -7,25 +8,73 @@ import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 import { getAuth } from "firebase/auth";
 
+const isNotEmpty = (value) => value.trim() !== '';
+const isEmail = (value) => value.includes('@');
+const isPassword = (value) => value.length >= 6;
+
 function RegistrationForm() {
   console.log('rerender');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('');
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get('mode') === 'login';
+
+  const {
+    value: usernameValue,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
+    valueChangeHandler: usernameChangeHandler,
+    inputBlurHandler: usernameBlurHandler,
+    reset: resetUsername,
+  } = useInput(isNotEmpty);
+
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmail,
+  } = useInput(isEmail);
+
+  const {
+    value: passwordValue,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPassword,
+  } = useInput(isPassword);
+
+  const {
+    value: confirmPasswordValue,
+    isValid: confirmPasswordIsValid,
+    hasError: confirmPasswordHasError,
+    valueChangeHandler: confirmPasswordChangeHandler,
+    inputBlurHandler: confirmPasswordBlurHandler,
+    reset: resetConfirmPassword,
+  } = useInput((value) => value === passwordValue);
+
+  let formIsValid = false;
+
+  if (usernameIsValid && emailIsValid && passwordIsValid && confirmPasswordIsValid) {
+    formIsValid = true;
+  }
+
 
   const onSignUpHandler = async (e) => {
     e.preventDefault()
 
-    if (email.trim() == '') {
-      return
+    if (!formIsValid) {
+      return;
     }
+
+    resetUsername();
+    resetEmail();
+    resetPassword();
+    resetConfirmPassword();
    
-    await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
@@ -45,7 +94,7 @@ function RegistrationForm() {
 
     const onLoginHandler = (e) => {
       e.preventDefault();
-      signInWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
@@ -59,43 +108,74 @@ function RegistrationForm() {
           console.log(errorCode, errorMessage);
         });
     };
+
+  const usernameClasses = usernameHasError ? `${classes['form-control']} ${classes.invalid}` : classes['form-control'];
+  const emailClasses  = emailHasError  ? `${classes['form-control']} ${classes.invalid}` : classes['form-control'];
+  const passwordClasses  = passwordHasError  ? `${classes['form-control']} ${classes.invalid}` : classes['form-control'];
+  const confirmPasswordClasses = confirmPasswordHasError ? `${classes['form-control']} ${classes.invalid}` : classes['form-control'];
+
     
 
   return (
     <div className={classes.container}>
       <Form method="post" className={classes.form} style={{ marginTop: 100 + "px" }}>
-        {!isLogin && (<>
+        {!isLogin && (<div className={usernameClasses}>
           <label htmlFor="username">Username:</label>
-          <input type="text" id="username" placeholder="Username" />
-        </>
+          <input type="text" 
+                 id="username" 
+                 placeholder="Username"
+                 value={usernameValue}
+                 onChange={usernameChangeHandler}
+                 onBlur={usernameBlurHandler}
+                  />
+          {usernameHasError && <p className={classes['error-text']}>Please enter a username.</p>}
+        </div>
         )}
+        <div className={emailClasses}>
+          <label htmlFor="email">Email:</label>
+          <input type="email" 
+                  id="email" 
+                  value={emailValue}
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                  required   
+                  placeholder="Email address" 
+          />
+          {emailHasError && <p className={classes['error-text']}>Please enter a valid email address.</p>}
+        </div>
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" 
-                id="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required   
-                placeholder="Email address" 
-        />
+        <div className={passwordClasses}>
+          <label htmlFor="password">Password:</label>
+          <input type="password" 
+                  id="password"
+                  value={passwordValue}
+                  onChange={passwordChangeHandler} 
+                  onBlur={passwordBlurHandler}
+                  required 
+                  placeholder="Password"                                
+          />
+          {passwordHasError && <p className={classes['error-text']}>Password must include at least 6 characters.</p>}
+        </div>
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" 
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
-                placeholder="Password"                                
-        />
+       
+          {!isLogin && ( <div className={confirmPasswordClasses}>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <input type="password" 
+                   id="confirmPassword" 
+                   value={confirmPasswordValue}
+                   onChange={confirmPasswordChangeHandler} 
+                   onBlur={confirmPasswordBlurHandler}
+                   required 
+                   placeholder="Confirm Password"
+                    />
+            {confirmPasswordHasError && <p className={classes['error-text']}>Please enter a correct password.</p>}
+          </div>
+          )}
 
-        {!isLogin && (<>
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" placeholder="Confirm Password" />
-        </>
-        )}
+
 
         {!isLogin ? (
-          <button type="submit" onClick={onSignUpHandler}>Sign Up</button>
+          <button disabled={!formIsValid} type="submit" onClick={onSignUpHandler}>Sign Up</button>
         ) : (
           <button type="submit" onClick={onLoginHandler}>Login</button>
         )}
