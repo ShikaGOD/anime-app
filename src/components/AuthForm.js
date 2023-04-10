@@ -1,15 +1,16 @@
 import classes from "./AuthForm.module.css";
-import { useState } from "react";
 import useInput from "./hooks/use-input";
 import { Form, Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 import { getAuth } from "firebase/auth";
 
 const isNotEmpty = (value) => value.trim() !== '';
-const isEmail = (value) => value.includes('@');
+const isEmail = (value) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(value);
+};
 const isPassword = (value) => value.length >= 6;
 
 function RegistrationForm() {
@@ -158,7 +159,7 @@ function RegistrationForm() {
         </div>
 
        
-          {!isLogin && ( <div className={confirmPasswordClasses}>
+        {!isLogin && ( <div className={confirmPasswordClasses}>
             <label htmlFor="confirmPassword">Confirm Password:</label>
             <input type="password" 
                    id="confirmPassword" 
@@ -168,11 +169,9 @@ function RegistrationForm() {
                    required 
                    placeholder="Confirm Password"
                     />
-            {confirmPasswordHasError && <p className={classes['error-text']}>Please enter a correct password.</p>}
+            {confirmPasswordHasError && <p className={classes['error-text']}>Passwords don`t match`.</p>}
           </div>
-          )}
-
-
+        )}
 
         {!isLogin ? (
           <button disabled={!formIsValid} type="submit" onClick={onSignUpHandler}>Sign Up</button>
