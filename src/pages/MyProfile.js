@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from "./MyProfile.module.css"
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { updateWatchedAnime } from '../store/animeSlices/watchedAnimeSlice';
 import { updatePlannedAnime } from '../store/animeSlices/plannedAnimeSlice';
 import { updatePostponedAnime } from '../store/animeSlices/postponedAnimeSlice';
@@ -95,7 +96,9 @@ function MyProfile() {
               <tr key={anime.id} >              
                 <td>                 
                     <img src={anime.image} alt={anime.title} className={classes.animeImage} />
-                    <span>{anime.title}</span>                                                      
+                    <Link to={`/titleDetail/${anime.id}`}>
+                      <span>{anime.title}</span>                                                      
+                    </Link>
                 </td>
                   <td>
                     {editScoreId === anime.id ? (
