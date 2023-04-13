@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchAnimeList } from '../../store/animeSlice';
 import Title from "./Title/Title";
 import classes from "./AnimeList.module.css";
@@ -15,7 +16,8 @@ function AnimeList() {
     dispatch(fetchAnimeList());
   }, [dispatch]);
   
-  const animeList = titles.map((title) => (
+  const animeList = titles.map((title) => (    
+    <Link to={`/titleDetail/${title.mal_id}`}> 
       <Title
         key={title.mal_id}
         id={title.mal_id}
@@ -23,6 +25,7 @@ function AnimeList() {
         titleName={title.title}
         episodes={title.episodes}
       />
+    </Link>
   ));
   return (
     <section>

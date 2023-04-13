@@ -1,5 +1,6 @@
 import classes from "./AuthForm.module.css";
 import useInput from "./hooks/use-input";
+import { useState } from "react";
 import { Form, Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
@@ -17,8 +18,11 @@ function RegistrationForm() {
   console.log('rerender');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [ wrongEmail, setWrongEmail ] = useState(false)
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get('mode') === 'login';
+
+  
 
   const {
     value: usernameValue,
@@ -107,6 +111,7 @@ function RegistrationForm() {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage);
+          setWrongEmail(true)
         });
     };
 
@@ -142,7 +147,8 @@ function RegistrationForm() {
                   required   
                   placeholder="Email address" 
           />
-          {emailHasError && <p className={classes['error-text']}>Please enter a valid email address.</p>}
+          {wrongEmail && !emailHasError && <p className={classes['error-text']}>WRONG.</p>}
+          {!wrongEmail && emailHasError && <p className={classes['error-text']}>Please enter a valid email address.</p>}
         </div>
 
         <div className={passwordClasses}>
