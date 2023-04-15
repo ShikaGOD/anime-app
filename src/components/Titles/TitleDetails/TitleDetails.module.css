@@ -37,6 +37,7 @@
 .genres {
     display: flex;
     justify-content: center;
+    margin-bottom: 5px;
   }
   
 .genres .genre {
@@ -60,6 +61,7 @@
 
 .titleInfoList {
     display: flex;
+    align-items: center;
     width: 100%;
     margin-left: 50px;
     background-color: #669ef8;
@@ -70,7 +72,24 @@
 .titleInfoList ul {
     width: 50%;
     list-style-type: none; 
-    padding: 20px 40px;    
+    margin-bottom: 60px;
+    padding: 0 40px;    
+}
+
+.titleInfoList ul li b {
+    /* color: rgb(139, 216, 136); */
+    color: rgb(127, 216, 231);
+    position: relative;
+}
+
+.titleInfoList ul li em::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(139, 216, 136);
 }
 
 .titleInfoList ul li{

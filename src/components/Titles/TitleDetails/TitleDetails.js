@@ -50,16 +50,16 @@ function TitleDetails() {
         />
         <div className={classes.titleInfoList}>
           <ul>
-            <li>Type: {animeInfo.type}</li>
-            <li>Episodes: {animeInfo.episodes}</li>
-            <li>Score: {animeInfo.score}</li>
-            <li>Studio: {animeInfo.studios.map((studio) => studio.name).join(", ")}</li>
+            <li>Type: <b>{animeInfo.type}</b></li>
+            <li>Episodes: <b>{animeInfo.episodes}</b></li>
+            <li>Score: <b>{animeInfo.score}</b></li>
+            <li>Studio: <b>{animeInfo.studios.map((studio) => studio.name).join(", ")}</b></li>
           </ul>
           <ul>
-            <li>Rank: {animeInfo.rank}</li>
-            <li>Japanese: {animeInfo.title_japanese}</li>
-            <li>Source: {animeInfo.source}</li>
-            <li>Year: {animeInfo.year}</li>
+            <li>Rank: <b>{animeInfo.rank}</b></li>
+            <li>Japanese: <b>{animeInfo.title_japanese}</b></li>
+            <li>Source: <b>{animeInfo.source}</b></li>
+            <li>Year: <b>{animeInfo.year}</b></li>
           </ul>
         </div>
       </div>
