@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAnimeList } from '../../store/animeSlice';
@@ -17,12 +17,11 @@ function AnimeList() {
   }, [dispatch]);
   
   const animeList = titles.map((title) => (    
-    <Link to={`/titleDetail/${title.mal_id}`}> 
-      <Title
-        key={title.mal_id}
+    <Link to={`/titleDetail/${title.mal_id}`} key={title.mal_id}> 
+      <Title        
         id={title.mal_id}
         image={title.images.jpg.image_url}
-        titleName={title.title}
+        titleName={title.title_english}
         episodes={title.episodes}
       />
     </Link>

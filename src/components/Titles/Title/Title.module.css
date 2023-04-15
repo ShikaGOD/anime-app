@@ -1,5 +1,7 @@
 .container {
     position: relative;
+    color: white;
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
     cursor: pointer;
     list-style-type: none;
     font-size: 24px;
