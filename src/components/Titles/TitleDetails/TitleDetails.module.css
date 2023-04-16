@@ -5,11 +5,12 @@
     color: white;
     text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
     font-size: 42px;
+    
 }
 
 .header {
     position: relative;
-    height:fit-content;
+    height: fit-content;
     background-color: #669ef8;
     text-align: center;    
     border: 10px solid #4782e2;
@@ -50,7 +51,9 @@
 
 .titleInfo {
     display: flex;
-    margin-top: 50px; 
+    margin-top: 50px;     
+    width: 100%;  
+        
 }
 
 .titleImage {     
@@ -67,22 +70,34 @@
     background-color: #669ef8;
     border: 10px solid #4782e2;
     border-radius: 10px;
+    
 }
 
 .titleInfoList ul {
     width: 50%;
     list-style-type: none; 
     margin-bottom: 60px;
-    padding: 0 40px;    
+    padding: 0 40px;  
+      
+}
+
+.titleInfoList ul li{
+    color: white;
+    margin-top: 60px;
+    font-size: 0.5em;
+    background-color: #4782e2;
+    /* height: 50px; */
+    /* padding-top: 13px; */
+    border-radius: 5px;
+      
 }
 
 .titleInfoList ul li b {
-    /* color: rgb(139, 216, 136); */
     color: rgb(127, 216, 231);
     position: relative;
 }
 
-.titleInfoList ul li em::after {
+.titleInfoList ul li b::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -92,11 +107,6 @@
   background-color: rgb(139, 216, 136);
 }
 
-.titleInfoList ul li{
-    color: white;
-    margin-top: 60px;
-    font-size: 0.5em;
-}
 
 .synopsis {
     font-size: 0.5em;

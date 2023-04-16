@@ -1,75 +1,75 @@
 .container {
-    position: relative;
-    color: white;
-    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
-    cursor: pointer;
-    list-style-type: none;
-    font-size: 24px;
-    transition: all 0.3s ease-out;
-  }
+  position: relative;
+  color: white;
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+  cursor: pointer;
+  list-style-type: none;
+  font-size: 24px;
+  transition: all 0.3s ease-out;
+}
   
-  .container:hover {
-    transform: scale(1.07);
-  }
+.container:hover {
+  transform: scale(1.07);
+}
   
-  .card {
-    position: relative;
-    height: 25rem;
-    width: 90%;
-    margin-top: 20px;
-    margin-left: 5%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    border-radius: 15px;
-    overflow: hidden;
-    text-align: center;
-    transition: all 0.3s ease-out;
-  }
+.card {
+  position: relative;
+  height: 25rem;
+  width: 90%;
+  margin-top: 20px;
+  margin-left: 5%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease-out;
+}
   
-  .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
   
-  .addButton {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #4285F4;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-  }
+.addButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a355f;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
   
-  .dropdownMenu {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: white;
-    /* border-radius: 0 0 15px 15px; */
-    padding: 10px;
-    margin-bottom: 39px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    /* z-index: 1; */
-    text-align: center;
-    transition: all 0.3s ease-out;
-  }
+.dropdownMenu {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white; 
+  padding: 10px;
+  margin-bottom: 39px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  text-align: center;
+  transition: all 0.3s ease-out;
+}
   
-  .dropdownMenu li {
-    list-style-type: none;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-  }
+.dropdownMenu li {
+  list-style-type: none;
+  color: #1a355f;
+  text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
   
-  .dropdownMenu li:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+.dropdownMenu li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
   
   

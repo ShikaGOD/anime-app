@@ -14,8 +14,12 @@ body {
   font-family: 'Oxanium' ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(3, 58, 83);
+  background-image: url('https://wallpapercave.com/wp/wp7684805.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-attachment: fixed;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

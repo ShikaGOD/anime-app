@@ -3,14 +3,25 @@
     font: inherit;
     border: none;
     padding: 0.75rem 3rem;
-    border-radius: 25px;
-    background-color: #4285F4;
-    color: white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #FFF;
     margin-left: 30px;
     font-weight: bold;
+    transition: all 0.2s ease-in-out;
   }
 
-  .button:hover,
-  .button:active {
-    background-color: #145063;
-  }
+button:hover {
+  transform: scale(1.1);
+  background-color: #145063;
+}
+
+.header button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #FFF, 0 0 0 4px #4285F4;
+}
+
+
+.button:active {
+  background-color: #145063;
+}

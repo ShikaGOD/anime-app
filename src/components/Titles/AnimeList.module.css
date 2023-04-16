@@ -1,24 +1,22 @@
 .container {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 28px;
-    justify-content: space-between;
-    font-size: 24px;
-    font-weight: bold;
-    
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold; 
 }
 
 .container p {
-    padding-top: 16px;
-    text-align: center;
+  padding-top: 16px;
+  text-align: center;
 }
 
 
 .animeSpinner {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   width: 100%;
   height: 100%;
 }
@@ -31,9 +29,9 @@
 }
 
   
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
     }
-  }
+}
   

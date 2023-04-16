@@ -61,7 +61,7 @@ function MyProfile() {
   
   return (
     <>
-      <h1>My Profile</h1>
+      <h1>My List</h1>
       <div className={classes.container}>
         <div className={classes.buttonContainer}>
           <button
