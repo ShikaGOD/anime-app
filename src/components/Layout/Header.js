@@ -23,9 +23,11 @@ function Header() {
 
   return (
     <header className={classes.header}>
-      <Link to="/">
-        <h1>AnimeList</h1>
-      </Link>
+      <div>
+        <Link to="/">
+          <h1>AnimeList</h1>
+        </Link>
+      </div>
       <div>
         {isLoggedIn ? (
           <>
