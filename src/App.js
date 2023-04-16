@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Authentication from "./pages/Authentication";
 import MyProfile from "./pages/MyProfile";
 import TitleDetails from "./components/Titles/TitleDetails/TitleDetails";
+import Home from "./components/Layout/Home";
 
 
 const router = createBrowserRouter([
@@ -11,10 +12,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     children: [
-      { path: '/', element: <HomePage /> },
+      { path: '/', element: <Home /> },
       { path: '/auth', element: <Authentication />},
       { path: '/profile', element: <MyProfile />},
-      { path: '/titleDetail/:titleId', element: <TitleDetails />}
+      { path: '/titleDetail/:titleId', element: <TitleDetails />}, 
+      { path: '/list', element: <HomePage />},
     ],
   },
 ]);
