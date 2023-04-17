@@ -1,13 +1,60 @@
-import classes from './TitleDetails.module.css'
+import classes from "./TitleDetails.module.css";
 
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToPlanned } from "../../../store/animeSlices/plannedAnimeSlice";
+import { addToWatched } from "../../../store/animeSlices/watchedAnimeSlice";
+import { addToPostponed } from "../../../store/animeSlices/postponedAnimeSlice";
+import { useParams } from "react-router-dom";
 
 function TitleDetails() {
   const { titleId } = useParams();
   const [animeInfo, setAnimeInfo] = useState(null);
-  const isLoading = useSelector(state => state.anime.isLoading);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const isLoading = useSelector((state) => state.anime.isLoading);
+  const dispatch = useDispatch();
+
+  const addButtonHandler = () => {
+    setShowDropdown((prevShowDropdown) => !prevShowDropdown);
+  };
+
+  const dropdownItemHandler = (list) => {
+    switch (list) {
+      case "watched":
+        dispatch(
+          addToWatched({
+            id: animeInfo.mal_id,
+            image: animeInfo.images.jpg.image_url,
+            title: animeInfo.title_english,
+            episodes: animeInfo.episodes,
+          })
+        );
+        break;
+      case "planned":
+        dispatch(
+          addToPlanned({
+            id: animeInfo.mal_id,
+            image: animeInfo.images.jpg.image_url,
+            title: animeInfo.title_english,
+            episodes: animeInfo.episodes,
+          })
+        );
+        break;
+      case "postponed":
+        dispatch(
+          addToPostponed({
+            id: animeInfo.mal_id,
+            image: animeInfo.images.jpg.image_url,
+            title: animeInfo.title_english,
+            episodes: animeInfo.episodes,
+          })
+        );
+        break;
+      default:
+        break;
+    }
+    setShowDropdown(false);
+  };
 
   useEffect(() => {
     const fetchAnimeInfo = async () => {
@@ -45,20 +92,49 @@ function TitleDetails() {
           src={animeInfo.images.jpg.large_image_url}
           alt={animeInfo.title}
         />
-        <button className={classes.titleButton}>Add</button>
+        <button
+          className={classes.titleButton}
+          onClick={(event) => {
+            event.preventDefault();
+            addButtonHandler();
+          }}
+        >
+          Add to list
+        </button>
+        {showDropdown && (
+              <ul className={classes.dropdownMenu}>
+                <li onClick={(event) => {
+                  dropdownItemHandler("watched");
+                  event.preventDefault();
+                    }                
+                  }>
+                  + Watched
+                </li>
+                <li onClick={(event) => {
+                  event.preventDefault();
+                  dropdownItemHandler("planned")}}>
+                  + Planned
+                </li>
+                <li onClick={(event) => {
+                  event.preventDefault();
+                  dropdownItemHandler("postponed")}}>
+                + Postponed
+                </li>
+              </ul>
+            )}
       </div>
 
       <div className={classes.trailerSynopsis}>
-        <p className={classes.synopsis}>{animeInfo.synopsis}</p>              
+        <p className={classes.synopsis}>{animeInfo.synopsis}</p>
         <div className={classes.trailer}>
-            <iframe
-              title={`${animeInfo.title} trailer`}
-              height="500"
-              src={animeInfo.trailer.embed_url}
-              frameBorder="0"
-              allowFullScreen
-            />
-        </div>        
+          <iframe
+            title={`${animeInfo.title} trailer`}
+            height="500"
+            src={animeInfo.trailer.embed_url}
+            frameBorder="0"
+            allowFullScreen
+          />
+        </div>
       </div>
     </section>
   );

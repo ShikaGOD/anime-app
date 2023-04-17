@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { addToPlanned } from "../../../store/animeSlices/plannedAnimeSlice";
 import { addToWatched } from "../../../store/animeSlices/watchedAnimeSlice";
 import { addToPostponed } from "../../../store/animeSlices/postponedAnimeSlice";
@@ -51,7 +50,7 @@ function Title(props) {
               event.preventDefault();
               addButtonHandler();        
             }}>
-              Add
+              Add to list
             </button>
             {showDropdown && (
               <ul className={classes.dropdownMenu}>
@@ -68,6 +67,7 @@ function Title(props) {
                   + Planned
                 </li>
                 <li onClick={(event) => {
+                  console.log('POSTPONED!');
                   event.preventDefault();
                   dropdownItemHandler("postponed")}}>
                 + Postponed

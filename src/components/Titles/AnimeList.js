@@ -17,7 +17,7 @@ function AnimeList() {
   }, [dispatch]);
   
   const animeList = titles.map((title) => (    
-    <Link to={`/titleDetail/${title.mal_id}`} key={title.mal_id}> 
+    <Link to={`/titleInfo/${title.mal_id}`} key={title.mal_id}> 
       <Title        
         id={title.mal_id}
         image={title.images.jpg.image_url}
