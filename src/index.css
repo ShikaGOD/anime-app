@@ -22,7 +22,21 @@ body {
   background-repeat: no-repeat;
   background-size: 100vw;
   background-attachment: fixed;
-  z-index: 0;
+
+}
+
+body::after {
+  content: "";
+  background: #1129b1;
+  background-attachment: fixed;
+  position: fixed;
+  opacity: .40;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  transition: all .25s ease;
+  z-index: -1;
 }
 
 

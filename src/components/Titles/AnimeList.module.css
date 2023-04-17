@@ -1,3 +1,8 @@
+.catalog {
+  position: relative;
+  z-index: 1;
+}
+
 .container {
   list-style: none;
   display: grid;
@@ -7,7 +12,6 @@
   font-size: 24px;
   font-weight: bold; 
 }
-
 
 
 .container p {

@@ -27,7 +27,7 @@ function AnimeList() {
     </Link>
   ));
   return (
-    <section>
+    <section className={classes.catalog}>
       {isLoading ? (
         <section className={classes.animeSpinner}>
           <div className={classes.spinner} />
