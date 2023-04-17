@@ -31,9 +31,8 @@ function TitleDetails() {
 
   return (
     <section className={classes.container}>
-      <div className={classes.header}>
-        <h1>{animeInfo.title}</h1>
-        <p>{animeInfo.rating}</p>
+      <div className={classes.titleInfo}>
+        <h1>{animeInfo.title_english.toUpperCase()}</h1>
         <div className={classes.genres}>
           {animeInfo.genres.map((genre) => (
             <div className={classes.genre} key={genre.mal_id}>
@@ -41,29 +40,26 @@ function TitleDetails() {
             </div>
           ))}
         </div>
-      </div>
-      <div className={classes.titleInfo}>
         <img
           className={classes.titleImage}
           src={animeInfo.images.jpg.large_image_url}
           alt={animeInfo.title}
         />
-        <div className={classes.titleInfoList}>
-          <ul>
-            <li>Type: <b>{animeInfo.type}</b></li>
-            <li>Episodes: <b>{animeInfo.episodes}</b></li>
-            <li>Score: <b>{animeInfo.score}</b></li>
-            <li>Studio: <b>{animeInfo.studios.map((studio) => studio.name).join(", ")}</b></li>
-          </ul>
-          <ul>
-            <li>Rank: <b>{animeInfo.rank}</b></li>
-            <li>Japanese: <b>{animeInfo.title_japanese}</b></li>
-            <li>Source: <b>{animeInfo.source}</b></li>
-            <li>Year: <b>{animeInfo.year}</b></li>
-          </ul>
-        </div>
+        <button className={classes.titleButton}>Add</button>
       </div>
-      <p className={classes.synopsis}>{animeInfo.synopsis}</p>
+
+      <div className={classes.trailerSynopsis}>
+        <p className={classes.synopsis}>{animeInfo.synopsis}</p>              
+        <div className={classes.trailer}>
+            <iframe
+              title={`${animeInfo.title} trailer`}
+              height="500"
+              src={animeInfo.trailer.embed_url}
+              frameBorder="0"
+              allowFullScreen
+            />
+        </div>        
+      </div>
     </section>
   );
 }

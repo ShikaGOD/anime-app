@@ -1,4 +1,4 @@
-.header {
+.mainHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,9 +9,7 @@
   z-index: 1;
 }
 
-
-
-.header h1 {
+.mainHeader h1 {
   color: #FFFFFF;
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
   margin: 0;
@@ -34,13 +32,13 @@
 }
 }
 
-.header div {
+.mainHeader div {
   display: flex;
   /* gap: 10px; */
   font-size: 0.6em;
 }
 
-.header a {
+.mainHeader a {
   text-decoration: none;
   color: #FFFFFF;
   font-size: 1em;

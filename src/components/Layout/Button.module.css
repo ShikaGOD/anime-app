@@ -16,11 +16,6 @@
   background-color: #145063;
 }
 
-.header button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #FFF, 0 0 0 4px #4285F4;
-}
-
 
 .button:active {
   background-color: #145063;

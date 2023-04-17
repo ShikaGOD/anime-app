@@ -22,7 +22,7 @@ function Header() {
   };
 
   return (
-    <header className={classes.header}>
+    <header className={classes.mainHeader}>
       <div>
         <Link to="/">
           <h1>AnimeList</h1>

@@ -1,9 +1,9 @@
 import React from 'react'
-import AnimeList from '../components/Titles/AnimeList'
+import Home from '../components/Layout/Home'
 
 function HomePage() {
   return (
-        <AnimeList />
+    <Home />
   )
 }
 
