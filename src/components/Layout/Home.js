@@ -26,7 +26,7 @@ function Home() {
           of Lorem Ipsum.
         
           <Link to="/list">
-              <button>Go to List</button>
+              <button>Get started!</button>
             </Link>
         </p>
       </div>

@@ -27,6 +27,10 @@ function Header() {
         <Link to="/">
           <h1>AnimeList</h1>
         </Link>
+        <ul className={classes.nav}>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/list'>Catalog</Link></li>
+        </ul>
       </div>
       <div>
         {isLoggedIn ? (
