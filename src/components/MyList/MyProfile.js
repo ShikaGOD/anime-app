@@ -28,24 +28,25 @@ function MyProfile() {
 
   const onInputHandler = (event, anime) => {
     const episodesWatched = Number(event.target.value);
-    const score = editScoreId;
-    if (episodesWatched >= 0 && episodesWatched <= anime.totalEpisodes) {
-      const updatedAnime = { ...anime, episodesWatched, score };
+    if (episodesWatched >= 0 && episodesWatched <= anime.episodes) {
+      const updatedAnime = { ...anime, episodesWatched};
       if (activeList === 'watchedAnime') {
         dispatch(updateWatchedAnime(updatedAnime));
       } else if (activeList === 'plannedAnime') {
         dispatch(updatePlannedAnime(updatedAnime));
+        console.log(updatedAnime);
       } else if (activeList === 'postponedAnime') {
-        dispatch(updatePostponedAnime(updatedAnime));
+        dispatch(updatePostponedAnime(updatedAnime));        
       }
     }
+    console.log(episodesWatched);
   };
   
   const onScoreChangeHandler = (event, anime) => {
     const score = Number(event.target.value);
     const episodesWatched = anime.episodesWatched;
     if (score >= 0 && score <= 10) {
-      const updatedAnime = { ...anime, score, episodesWatched };
+      const updatedAnime = { ...anime, score };
       if (activeList === 'watchedAnime') {
       dispatch(updateWatchedAnime(updatedAnime));
       console.log(updatedAnime);
@@ -96,7 +97,7 @@ function MyProfile() {
               <tr key={anime.id} >              
                 <td>                 
                     <img src={anime.image} alt={anime.title} className={classes.animeImage} />
-                    <Link to={`/titleDetail/${anime.id}`}>
+                    <Link to={`/titleInfo/${anime.id}`}>
                       <span>{anime.title}</span>                                                      
                     </Link>
                 </td>

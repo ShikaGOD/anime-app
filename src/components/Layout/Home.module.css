@@ -5,10 +5,10 @@ body {
 
 body .container::after {
   content: "";
-  background: #16d816;
+  background: #000000;
   background-attachment: fixed;
   position: fixed;
-  opacity: .15;
+  opacity: .30;
   top: 0;
   left: 0;
   height: 100vh;
