@@ -104,7 +104,7 @@ function RegistrationForm() {
           const user = userCredential.user;
           console.log(user);
           dispatch(login());
-          navigate("/profile");
+          navigate("/my-list");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -121,8 +121,8 @@ function RegistrationForm() {
     
 
   return (
-    <div className={classes.container}>
-      <Form method="post" className={classes.form} style={{ marginTop: 100 + "px" }}>
+    <div className={classes.authContainer}>
+      <Form method="post" className={classes.form}>
         {!isLogin ?
         (<>
           <div className={usernameClasses}>

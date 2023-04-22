@@ -1,10 +1,4 @@
-.head {
-  text-align: center;
-  color: white;
-  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
-}
-
-.container {
+.myProfileContainer {
   max-width: 100%;
   margin: 50px ;
   font-size: 20px;
@@ -15,7 +9,7 @@
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
 
-.container button {
+.myProfileContainer button {
   cursor: pointer;
   font: inherit;
   border: none;
@@ -25,29 +19,33 @@
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
 
-.container button:hover,
-.container button:focus {
+.myProfileContainer button:hover,
+.myProfileContainer button:focus {
   background-color: #4782e2;
 }
 
-.buttonContainer {
+.listNav {
   width: 100%;
   border-bottom: 5px solid #4782e2;
 }
 
 .animeList {
+  width: 100%;
   padding: 24px;
 }
 
+.animeList caption {
+  color: #fff
+}
+
 .animeList thead tr {
-  gap: 52px;
+  gap: 62px;
   text-align: left;
 }
 
 .animeList tr {
   display: grid;
   grid-template-columns: 20fr 1fr 1fr;
-  gap: 52px;
   padding: 24px 12px;
   font-size: 1em;
   font-weight: bold;
@@ -62,15 +60,23 @@
   align-items: center;
 }
 
+
 .tbody td:first-child {
   display: flex;
   align-items: center;
 }
 
+
 .tbody td:first-child span {
   margin-left: 20px;
   display: inline-block;
 }
+
+
+.tbody span {
+  color: white;
+}
+
 
 .animeImage {
   height: 100px;
@@ -80,11 +86,15 @@
   margin-left: -20px;
 }
 
+.episodesWatched {
+  display: inline-block;
+  width: 76px;
+}
 
 input[type="number"] {
   appearance: none; 
   -moz-appearance: textfield;
-  width: 60px;
+  width: 76px;
   padding: 0px;
   border: 1px solid #4285F4; 
   border-radius: 5px; 
@@ -99,19 +109,4 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
 
-li {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #333;
-}
-
-span {
-  color:white
-}

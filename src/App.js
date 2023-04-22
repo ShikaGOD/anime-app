@@ -7,6 +7,7 @@ import TitleDetails from "./components/Titles/TitleDetails/TitleDetails";
 import HomePage from "./pages/HomePage";
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/auth', element: <Authentication />},
-      { path: '/profile', element: <MyListPage />},
+      { path: '/my-list', element: <MyListPage />},
       { path: '/titleInfo/:titleId', element: <TitleDetails />}, 
       { path: '/list', element: <ListPage />},
     ],

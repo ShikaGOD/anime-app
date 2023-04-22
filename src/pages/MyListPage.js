@@ -3,7 +3,10 @@ import MyProfile from '../components/MyList/MyProfile'
 
 function MyListPage() {
   return (
+
     <MyProfile />
+
+
   )
 }
 

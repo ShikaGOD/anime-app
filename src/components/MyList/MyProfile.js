@@ -62,9 +62,14 @@ function MyProfile() {
   
   return (
     <>
-      <h1 className={classes.head}>My List</h1>
-      <div className={classes.container}>
-        <div className={classes.buttonContainer}>
+    
+      <div className={classes.myProfileContainer}>
+      {/* <img
+          src="https://i.imgur.com/AF3au7J.jpg"
+          alt="home-background"
+          className={classes.background}
+        />         */}
+        <div className={classes.listNav}>
           <button
             className={activeList === 'watchedAnime' ? classes.activeButton : ''}
             onClick={() => setActiveList('watchedAnime')}
@@ -101,20 +106,20 @@ function MyProfile() {
                       <span>{anime.title}</span>                                                      
                     </Link>
                 </td>
-                  <td>
-                    {editScoreId === anime.id ? (
-                      <input
-                        className={classes.scoreInput}
-                        type="number"
-                        value={anime.score}
-                        min={0}
-                        max={10}
-                        onChange={(event) => onScoreChangeHandler(event, anime)}
-                        onMouseLeave={() => setEditScoreId(null)}   
-                        onFocus={(e) => e.target.select()}           
-                      />
-                    ) : (
-                      <span
+                <td>
+                  {editScoreId === anime.id ? (
+                    <input
+                      className={classes.scoreInput}
+                      type="number"
+                      value={anime.score}
+                      min={0}
+                      max={10}
+                      onChange={(event) => onScoreChangeHandler(event, anime)}
+                      onMouseLeave={() => setEditScoreId(null)}   
+                      onFocus={(e) => e.target.select()}           
+                    />
+                  ) : (
+                    <span
                       className={classes.ratingValue}
                       onMouseEnter={() => setEditScoreId(anime.id)}
                     >

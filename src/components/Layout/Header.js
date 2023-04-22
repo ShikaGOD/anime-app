@@ -35,8 +35,8 @@ function Header() {
       <div>
         {isLoggedIn ? (
           <>
-            <Link to="/profile">
-              <Button>My Profile</Button>
+            <Link to="/my-list">
+              <Button>My List</Button>
             </Link>
             <Button onClick={onLogoutHandler}>Sign out</Button>
           </>

@@ -5,7 +5,7 @@ import classes from "./Home.module.css";
 function Home() {
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.homeContainer}>
         <img
           src="https://images6.alphacoders.com/774/774850.jpg"
           alt="home-background"
