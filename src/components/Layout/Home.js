@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import classes from "./Home.module.css";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={classes.homeContainer}>
@@ -24,9 +26,7 @@ function Home() {
           with desktop publishing software like Aldus PageMaker including versions
           of Lorem Ipsum.
         
-          <Link to="/list">
-              <button>Get started!</button>
-            </Link>
+          <button onClick={() => navigate("/list")}>Get started!</button>
         </p>
       </div>
     </>

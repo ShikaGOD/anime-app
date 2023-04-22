@@ -1,6 +1,5 @@
 import classes from "./AuthForm.module.css";
 import useInput from "../hooks/use-input";
-import { useState } from "react";
 import { Form, Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";

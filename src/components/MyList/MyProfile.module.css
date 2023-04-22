@@ -1,6 +1,6 @@
 .myProfileContainer {
   max-width: 100%;
-  margin: 50px ;
+  margin: 450px 50px 0 50px;
   font-size: 20px;
   background-color: #669ef8;
   border: 10px solid #4782e2;
@@ -23,6 +23,7 @@
 .myProfileContainer button:focus {
   background-color: #4782e2;
 }
+
 
 .listNav {
   width: 100%;

@@ -1,11 +1,11 @@
-body {
-    background-color: #fff; /* замінюємо background-image на background-color */
+/* body {
+    background-color: #fff; 
 }
 
 
 body .container::after {
   content: "";
-  background: #000000;
+  background: #cf15a1;
   background-attachment: fixed;
   position: fixed;
   opacity: .30;
@@ -15,7 +15,7 @@ body .container::after {
   width: 100%;
   transition: all .25s ease;
   z-index: 0;  
-}
+} */
   
 
 .background {

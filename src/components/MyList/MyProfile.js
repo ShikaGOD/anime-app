@@ -62,13 +62,7 @@ function MyProfile() {
   
   return (
     <>
-    
       <div className={classes.myProfileContainer}>
-      {/* <img
-          src="https://i.imgur.com/AF3au7J.jpg"
-          alt="home-background"
-          className={classes.background}
-        />         */}
         <div className={classes.listNav}>
           <button
             className={activeList === 'watchedAnime' ? classes.activeButton : ''}
