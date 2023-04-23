@@ -64,24 +64,24 @@ function MyList() {
     <>
       <div className={classes.myProfileContainer}>
         <div className={classes.listNav}>
-          <button
+          <a
             className={activeList === 'watchedAnime' ? classes.activeButton : ''}
             onClick={() => setActiveList('watchedAnime')}
           >
             WATCHED
-          </button>
-          <button
+          </a>
+          <a
             className={activeList === 'plannedAnime' ? classes.activeButton : ''}
             onClick={() => setActiveList('plannedAnime')}
           >
             PLANNED
-          </button>
-          <button
+          </a>
+          <a
             className={activeList === 'postponedAnime' ? classes.activeButton : ''}
             onClick={() => setActiveList('postponedAnime')}
           >
             POSTPONED
-          </button>
+          </a>
         </div>
         <table className={classes.animeList}>
           <thead>

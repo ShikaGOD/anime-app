@@ -87,6 +87,7 @@ function TitleDetails() {
             </div>
           ))}
         </div>
+      <div className={classes.titleButtonWrapper}>
         <img
           className={classes.titleImage}
           src={animeInfo.images.jpg.large_image_url}
@@ -102,7 +103,8 @@ function TitleDetails() {
           Add to list
         </button>
         {showDropdown && (
-              <ul className={classes.dropdownMenu}>
+          <div className={classes.dropdownWrapper}>
+              <ul className={classes.dropdown}>
                 <li onClick={(event) => {
                   dropdownItemHandler("watched");
                   event.preventDefault();
@@ -121,7 +123,9 @@ function TitleDetails() {
                 + Postponed
                 </li>
               </ul>
+          </div>
             )}
+      </div>  
       </div>
 
       <div className={classes.trailerSynopsis}>

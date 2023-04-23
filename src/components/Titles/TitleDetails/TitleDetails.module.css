@@ -42,6 +42,23 @@
     cursor: zoom-in;
 }
 
+
+.titleButtonWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+  
+.dropdownWrapper {
+    position: absolute;
+    bottom: 200px;
+    left: 0;
+    width: 100%;
+}
+
+
 .titleButton {
     cursor: pointer;
     border: none;
@@ -57,31 +74,30 @@
 }
 
 
-.titleButton:hover {
-    background-color: rgb(20, 20, 20);
+.titleButton:hover {   
+    background-color: rgba(0,50,150,.9);
     transition: all 0.3s ease-out;
 }
 
 
-.dropdownMenu {
+.dropdown {
     position: absolute;
-    bottom: 0;
-    width: 20%;
+    width: 100%;
     background-color: transparent; 
     font-weight: bold;
     padding: 10px;
     margin-bottom: 11px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     text-align: center;
     transition: all 0.3s ease-out;
-}
+  }
     
-.dropdownMenu li {
+.dropdown li {
     cursor: pointer;
     list-style-type: none;
-    background-color: rgb(0, 0, 0);
+    font-size: 18px;
+    background-color: rgba(0,50,150,.9);
     color: #FFF;
     margin-top: 0;
     padding: 0.75rem 1rem;
@@ -89,8 +105,8 @@
     transition: all 0.3s ease-out;
 }
     
-.dropdownMenu li:hover {
-    background-color: rgb(26, 25, 25);
+.dropdown li:hover {
+    background-color: rgba(0, 25, 75, 0.9)
 }
 
 
