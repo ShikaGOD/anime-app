@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 36px;
+  font-size: 28px;
   padding: 20px;
   margin-bottom: 20px;
   top: 0;
@@ -77,6 +77,15 @@
 
 .nav li:hover {
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+}
+
+.searchbar {
+  width: 400px;
+  height: 40px;
+  color: #ffffff;
+  font-size: 0.6em;
+  border-radius: 5px;
+  background-color: rgba(0,50,150,.8)
 }
 
 

@@ -4,7 +4,7 @@
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
   cursor: pointer;
   list-style-type: none;
-  font-size: 24px;
+  font-size: 20px;
   transition: all 0.3s ease-out;
 }
   
@@ -14,7 +14,7 @@
   
 .card {
   position: relative;
-  height: 25rem;
+  height: 22rem;
   width: 90%;
   margin-top: 20px;
   margin-left: 5%;

@@ -13,10 +13,28 @@
 
 .button:hover {
   transform: scale(1.1);
-  background-color: #145063;
+  background-color: rgba(0,50,150,.8);
 }
 
 
 .button:active {
-  background-color: #145063;
+  background-color: rgba(0,50,150,.8);
+}
+
+.mainButton {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  padding: 0.75rem 3rem;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #FFF;
+  margin-left: 30px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.mainButton:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 102, 31, 0.8);
 }

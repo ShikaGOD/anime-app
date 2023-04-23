@@ -1,12 +1,13 @@
 import classes from "./Header.module.css";
 import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation  } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import { auth } from "../firebase";
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -32,6 +33,7 @@ function Header() {
           <li><Link to='/list'>Catalog</Link></li>
         </ul>
       </div>
+      {location.pathname !== '/' && <input className={classes.searchbar} type="searchbar" />}
       <div>
         {isLoggedIn ? (
           <>

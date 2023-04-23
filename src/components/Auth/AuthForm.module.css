@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .form {
@@ -18,7 +18,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   width: 40%;
   font-size: 24px;
-  /* animation: form-animation 0.5s ease-in-out; */
+  animation: form-animation 0.5s ease-in-out;
   background-image: linear-gradient(
     180deg,
     hsl(240deg 100% 20%) 0%,
@@ -42,7 +42,7 @@
 }
 
 .form label {
-  font-size: 28px;
+  font-size: 24px;
   color: #1a355f;
   text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff,
     -1px 1px 0px #fff;
@@ -56,7 +56,7 @@
   border: none;
   border-radius: 5px;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .form input:focus {
@@ -68,7 +68,7 @@
   background-color: #1a355f;
   color: #fff;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   border-radius: 5px;
   padding: 15px 30px;
   margin-top: 20px;
@@ -96,7 +96,7 @@
   color: white;
   border: none;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: underline;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -117,8 +117,8 @@
 }
 
 .error-text {
-  color: #b40e0e;
-  font-size: 0.9em;
+  color: #df4040;
+  font-size: 0.8em;
   margin-top: -20px;
 }
 
