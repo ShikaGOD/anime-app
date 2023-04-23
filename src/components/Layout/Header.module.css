@@ -88,5 +88,9 @@
   background-color: rgba(0,50,150,.8)
 }
 
+.searchbar::placeholder {
+  color: #dad2d2;
+}
+
 
 

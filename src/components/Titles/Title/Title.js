@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { addToPlanned } from "../../../store/animeSlices/plannedAnimeSlice";
 import { addToWatched } from "../../../store/animeSlices/watchedAnimeSlice";
@@ -8,6 +8,18 @@ import classes from "./Title.module.css";
 function Title(props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [stateList, dispatchList] = useReducer((stateList, action) => {
+    switch (action.type) {
+      case "ADD_TO_WATCHED":
+        return { ...stateList, watched: true };
+      case "ADD_TO_PLANNED":
+        return { ...stateList, planned: true };
+      case "ADD_TO_POSTPONED":
+        return { ...stateList, postponed: true };
+      default:
+        return stateList;
+    }
+  }, { watched: false, planned: false, postponed: false });
   const dispatch = useDispatch();
 
   const addButtonHandler = () => {
@@ -17,22 +29,24 @@ function Title(props) {
   const dropdownItemHandler = (list) => {
     switch (list) {
       case "watched":
+        dispatchList({ type: "ADD_TO_WATCHED" });
         dispatch(addToWatched({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       case "planned":
+        dispatchList({ type: "ADD_TO_PLANNED" });
         dispatch(addToPlanned({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       case "postponed":
+        dispatchList({ type: "ADD_TO_POSTPONED" });
         dispatch(addToPostponed({id: props.id, title: props.titleName, image: props.image, episodes: props.episodes}));
         break;
       default:
         break;
     }
-    setShowDropdown(false);
+    // setShowDropdown(false);
   };
 
-  return (
-    
+  return ( 
       <li
         className={classes.container}
         onMouseEnter={() => setHovered(true)}
@@ -59,18 +73,17 @@ function Title(props) {
                   event.preventDefault();
                     }                
                   }>
-                  + Watched
+                  {stateList.watched ? '✓ Watched' : '+ Watched'}
                 </li>
                 <li onClick={(event) => {
                   event.preventDefault();
                   dropdownItemHandler("planned")}}>
-                  + Planned
+                  {stateList.planned ? '✓ Planned' : '+ Planned'}
                 </li>
                 <li onClick={(event) => {
-                  console.log('POSTPONED!');
                   event.preventDefault();
                   dropdownItemHandler("postponed")}}>
-                + Postponed
+                {stateList.postponed ? '✓ Postponed' : '+ Postponed'}
                 </li>
               </ul>
             )}
@@ -80,8 +93,7 @@ function Title(props) {
         <div>
           <p>{props.titleName}</p>
         </div>
-      </li>
-    
+      </li>   
   );
 }
 

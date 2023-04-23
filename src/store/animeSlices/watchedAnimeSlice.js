@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+function checkIfAdded(state, id) {
+  return state.some(anime => anime.id === id);
+}
+
 const watchedAnimeSlice = createSlice({
     name: 'watchedAnime',
     initialState: [],    
     reducers: {
       addToWatched(state, action) {
         const { id, title, image, episodes } = action.payload;
+        if (!checkIfAdded(state, id)) {
         state.push({
             id,
             title,
@@ -14,6 +19,7 @@ const watchedAnimeSlice = createSlice({
             episodesWatched: 0,
             score: "-"
         });
+      }
       },
       updateWatchedAnime(state, action) {
         const { id, episodesWatched, score } = action.payload;

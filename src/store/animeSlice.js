@@ -29,9 +29,17 @@ const animeSlice = createSlice({
   initialState: {
     animeTitles: [],
     isLoading: true,
-    error: null
+    error: null,
+    searchResults: [],
   },
-  reducers: {},
+  reducers: {
+    setSearchResults(state, action) {
+      state.searchResults = action.payload;
+    },
+    clearSearchResults(state) {
+      state.searchResults = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAnimeList.pending, (state) => {
@@ -48,5 +56,7 @@ const animeSlice = createSlice({
       });
   }
 });
+
+export const { setSearchResults, clearSearchResults } = animeSlice.actions
 
 export default animeSlice.reducer;

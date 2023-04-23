@@ -1,6 +1,6 @@
 import classes from "./Header.module.css";
 import Button from "./Button";
-import { Link, useNavigate, useLocation  } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import { auth } from "../firebase";
@@ -13,11 +13,14 @@ function Header() {
 
   const onLogoutHandler = () => {
     dispatch(logout());
-    auth.signOut().then(() => {
-      // Sign-out successful.
-          navigate("/");
-          console.log("Signed out successfully")
-      }).catch((error) => {
+    auth
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+        navigate("/");
+        console.log("Signed out successfully");
+      })
+      .catch((error) => {
         console.log(error);
       });
   };
@@ -29,11 +32,21 @@ function Header() {
           <h1>AnimeList</h1>
         </Link>
         <ul className={classes.nav}>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/list'>Catalog</Link></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/list">Catalog</Link>
+          </li>
         </ul>
       </div>
-      {location.pathname !== '/' && <input className={classes.searchbar} type="searchbar" />}
+      {location.pathname !== "/" && (
+        <input
+          className={classes.searchbar}
+          type="searchbar"
+          placeholder="search anime"
+        />
+      )}
       <div>
         {isLoggedIn ? (
           <>
