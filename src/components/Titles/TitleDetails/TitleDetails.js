@@ -133,7 +133,7 @@ function TitleDetails() {
         <div className={classes.trailer}>
           <iframe
             title={`${animeInfo.title} trailer`}
-            height="500"
+            height="400"
             src={animeInfo.trailer.embed_url}
             frameBorder="0"
             allowFullScreen

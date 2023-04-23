@@ -1,7 +1,7 @@
 .myProfileContainer {
   max-width: 100%;
   margin: 250px 200px 0 200px;
-  font-size: 20px;
+  font-size: 16px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
@@ -26,9 +26,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 100px;
   margin-bottom: 20px;
-  border: 3px solid #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   background-color: rgba(0,50,150,.8)
 }
@@ -36,33 +36,32 @@
 .animeList {
   width: 100%;
   padding: 24px;
-  border: 3px solid #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   background-color: rgba(0,50,150,.5)
 }
 
-.animeList caption {
-  color: #fff
-}
-
-.animeList thead tr {
-  gap: 62px;
-  text-align: left;
-}
 
 .animeList tr {
-  display: grid;
-  grid-template-columns: 20fr 1fr 1fr;
   padding: 24px 12px;
   font-size: 1em;
   font-weight: bold;
   color: #ffffff;
 }
 
+
+.animeList thead tr {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  gap: 15px;
+  padding-right: 25px;
+  text-align: left;
+}
+
+
 .tbody tr {
   display: grid;
-  grid-template-columns: 20fr 1fr 1fr;
-  gap: 52px;
+  grid-template-columns: 4fr 1fr 1fr;
   font-size: 1em;
   align-items: center;
 }
@@ -78,12 +77,6 @@
 }
 
 
-.tbody td:first-child span {
-  margin-left: 20px;
-  display: inline-block;
-}
-
-
 .tbody span {
   color: white;
 }
@@ -93,20 +86,17 @@
   height: 100px;
 }
 
+
 .scoreInput {
   margin-left: -20px;
 }
 
-.episodesWatched {
-  display: inline-block;
-  width: 76px;
-}
 
 input[type="number"] {
   appearance: none; 
   -moz-appearance: textfield;
-  width: 76px;
-  padding: 0px;
+  width: 56px;
+  padding: 0;
   border: 1px solid #4285F4; 
   border-radius: 5px; 
   text-align: center; 

@@ -125,7 +125,7 @@ function MyList() {
                   {editEpisodesId === anime.id ? (
                     <input
                       type="number"
-                      value={anime.episodesWatched}
+                      value={anime.episodesInput}
                       min={0}
                       max={anime.episodes}
                       onChange={(event) => onInputHandler(event, anime)}

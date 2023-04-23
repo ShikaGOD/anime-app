@@ -115,24 +115,23 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-left: 100px;
+    margin-left: 150px;
 }
 
 .synopsis {
-    width: 75%;
+    width: 70%;
     font-size: 0.5em;
     margin-top: 50px;
     padding: 10px;
     color: #fff;
     text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
-    /* border: 3px solid #ffffff; */
     border-radius: 5px;
     background-color: rgba(0,50,150,.5);
 }
 
 
 iframe {
-    width: 75%;
+    width: 70%;
     margin-top: 50px;
 }  
 

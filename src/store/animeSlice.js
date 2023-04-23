@@ -3,16 +3,24 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchAnimeList = createAsyncThunk(
   'anime/fetchAnimeList',
   async () => {
-    const response = await fetch(
-      'https://api.jikan.moe/v4/top/anime?filter=bypopularity&limit=100'
-    );
-    if (!response.ok) {
-      throw new Error("Something went wrong!");
+    const numPages = 2; // 100 titles / 25 titles per page = 4 pages
+    const promises = [];
+
+    for (let i = 1; i <= numPages; i++) {
+      const response = await fetch(
+        `https://api.jikan.moe/v4/top/anime?filter=bypopularity&page=${i}`
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      const responseData = await response.json();
+      const { data } = responseData;
+      promises.push(data);
     }
-    const responseData = await response.json();
-    const { data } = responseData;
-    console.log(data);
-    return data;
+
+    const animeList = promises.flat();
+    console.log(animeList);
+    return animeList;
   }
 );
 
