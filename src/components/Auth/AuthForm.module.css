@@ -21,23 +21,20 @@
   /* animation: form-animation 0.5s ease-in-out; */
   background-image: linear-gradient(
     180deg,
-    hsl(237deg 55% 14%) 13%,
-    hsl(270deg 38% 16%) 59%,
-    hsl(306deg 29% 19%) 70%,
-    hsl(331deg 31% 25%) 76%,
-    hsl(346deg 32% 31%) 79%,
-    hsl(356deg 32% 37%) 81%,
-    hsl(4deg 35% 42%) 84%,
-    hsl(9deg 40% 46%) 87%,
-    hsl(12deg 46% 51%) 92%,
-    hsl(15deg 60% 55%) 100%
+    hsl(240deg 100% 20%) 0%,
+    hsl(225deg 100% 25%) 11%,
+    hsl(218deg 100% 30%) 22%,
+    hsl(212deg 100% 34%) 33%,
+    hsl(208deg 100% 38%) 44%,
+    hsl(203deg 100% 41%) 56%,
+    hsl(199deg 100% 43%) 67%,
+    hsl(195deg 100% 46%) 78%,
+    hsl(192deg 100% 48%) 89%,
+    hsl(188deg 100% 50%) 100%
   );
   background-clip: padding-box;
   background-origin: border-box;
-  
 }
-
-
 
 .form div {
   width: 100%;
@@ -47,7 +44,8 @@
 .form label {
   font-size: 28px;
   color: #1a355f;
-  text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;
+  text-shadow: 1px 1px 0px #fff, -1px -1px 0px #fff, 1px -1px 0px #fff,
+    -1px 1px 0px #fff;
   margin-bottom: 10px;
 }
 
@@ -66,10 +64,9 @@
   border-color: #0e27b4;
 }
 
-
 .form button {
   background-color: #1a355f;
-  color: #FFF;
+  color: #fff;
   border: none;
   font-size: 24px;
   border-radius: 5px;
@@ -86,7 +83,7 @@
 
 .form button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #FFF, 0 0 0 4px #1E90FF;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1e90ff;
 }
 
 .form button[type="submit"]:disabled {
@@ -137,4 +134,3 @@
     background-position: top;
   }
 }
-

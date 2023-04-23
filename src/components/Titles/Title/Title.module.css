@@ -59,12 +59,13 @@
 }
   
 .dropdownMenu li {
+  cursor: pointer;
   list-style-type: none;
+  font-size: 0.75em;
   color: #1a355f;
   text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;
   padding: 5px;
   margin: 5px;
-  cursor: pointer;
   transition: all 0.3s ease-out;
 }
   
