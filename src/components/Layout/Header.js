@@ -1,5 +1,6 @@
 import classes from "./Header.module.css";
 import Button from "./Button";
+import SearchBar from "./SearchBar";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
@@ -41,11 +42,7 @@ function Header() {
         </ul>
       </div>
       {location.pathname !== "/" && (
-        <input
-          className={classes.searchbar}
-          type="searchbar"
-          placeholder="search anime"
-        />
+        <SearchBar />
       )}
       <div>
         {isLoggedIn ? (

@@ -51,7 +51,6 @@
   bottom: -4px;
   width: 100%;
   background-color: white; 
-  padding: 10px;
   margin-bottom: 39px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   text-align: center;
@@ -65,7 +64,7 @@
   color: #1a355f;
   text-shadow: 1px 1px 0px #FFF, -1px -1px 0px #FFF, 1px -1px 0px #FFF, -1px 1px 0px #FFF;
   padding: 5px;
-  margin: 5px;
+  margin: 10px;
   transition: all 0.3s ease-out;
 }
   
