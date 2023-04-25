@@ -11,7 +11,7 @@ export const fetchAnimeList = createAsyncThunk(
     }
     const responseData = await response.json();
     const { data } = responseData;
-    console.log(data);
+    // console.log(data);
     return data;
   }
 );
@@ -40,7 +40,5 @@ const animeSlice = createSlice({
       });
   },
 });
-
-export const { setSearchResults, clearSearchResults } = animeSlice.actions;
 
 export default animeSlice.reducer;

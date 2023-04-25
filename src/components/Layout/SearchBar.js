@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAnimeSearchResults } from "../../store/searchSlice";
 import SelectSearch from "react-select-search";
-import "./SearchBar.css"
+import "./SearchBar.css";
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
+  const searchResults = useSelector(state => state.search.searchResults);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [selectedValue, setSelectedValue] = useState(null);
+
   async function getOptions(query) {
     try {
-      const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`);
-      const data = await response.json();
-    //   console.log(data.data);
-      const options = data.data.map(({ mal_id, title }) => ({
-        value: mal_id,
-        name: title,
-      }));
-
-      console.log(options);
+      const options = await dispatch(fetchAnimeSearchResults(query));
       return options;
     } catch (error) {
       console.error(error);
@@ -21,13 +21,19 @@ function SearchBar() {
     }
   }
 
+  function handleChange(value) {
+    setSelectedValue(value);
+    navigate(`/titleInfo/${value}`);
+  }
+
   return (
     <SelectSearch
       search
       placeholder="Search Anime"
-      options={[]}
+      options={searchResults}
       getOptions={(query) => getOptions(query)}
-      onChange={(value) => console.log(value)}
+      onChange={handleChange}
+      value={selectedValue}
     />
   );
 }

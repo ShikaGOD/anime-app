@@ -9,7 +9,7 @@
     --select-search-text: #ffffff;
     --select-search-subtle-text: #6c6f85;
     --select-search-inverted-text: var(--select-search-background);
-    --select-search-highlight: rgba(93, 137, 224, 0.8);
+    --select-search-highlight: rgba(128, 153, 202, 0.8);
 
     width: 400px;
     position: relative;
@@ -18,7 +18,16 @@
     /* border-radius: 20px; */
 }
 
+.option-image {
+    position: relative;
+    z-index: 5;
+    height: 70px;
+    width: 50px;
+}
 
+.option-text {
+    font-size: 16px;
+}
 
 .select-search-container *,
 .select-search-container *::after,
