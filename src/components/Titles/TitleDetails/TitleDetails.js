@@ -70,8 +70,8 @@ function TitleDetails() {
 
   if (isLoading || !animeInfo) {
     return (
-      <section>
-        <h1>Loading...</h1>
+      <section className={classes.animeSpinner}>
+        <div className={classes.spinner} />
       </section>
     );
   }
@@ -87,58 +87,78 @@ function TitleDetails() {
             </div>
           ))}
         </div>
-      <div className={classes.titleButtonWrapper}>
-        <img
-          className={classes.titleImage}
-          src={animeInfo.images.jpg.large_image_url}
-          alt={animeInfo.title}
-        />
-        <button
-          className={classes.titleButton}
-          onClick={(event) => {
-            event.preventDefault();
-            addButtonHandler();
-          }}
-        >
-          Add to list
-        </button>
-        {showDropdown && (
-          <div className={classes.dropdownWrapper}>
+        <div className={classes.titleButtonWrapper}>
+          <img
+            className={classes.titleImage}
+            src={animeInfo.images.jpg.large_image_url}
+            alt={animeInfo.title}
+          />
+          <button
+            className={classes.titleButton}
+            onClick={(event) => {
+              event.preventDefault();
+              addButtonHandler();
+            }}
+          >
+            Add to list
+          </button>
+          {showDropdown && (
+            <div className={classes.dropdownWrapper}>
               <ul className={classes.dropdown}>
-                <li onClick={(event) => {
-                  dropdownItemHandler("watched");
-                  event.preventDefault();
-                    }                
-                  }>
+                <li
+                  onClick={(event) => {
+                    dropdownItemHandler("watched");
+                    event.preventDefault();
+                  }}
+                >
                   + Watched
                 </li>
-                <li onClick={(event) => {
-                  event.preventDefault();
-                  dropdownItemHandler("planned")}}>
+                <li
+                  onClick={(event) => {
+                    event.preventDefault();
+                    dropdownItemHandler("planned");
+                  }}
+                >
                   + Planned
                 </li>
-                <li onClick={(event) => {
-                  event.preventDefault();
-                  dropdownItemHandler("postponed")}}>
-                + Postponed
+                <li
+                  onClick={(event) => {
+                    event.preventDefault();
+                    dropdownItemHandler("postponed");
+                  }}
+                >
+                  + Postponed
                 </li>
               </ul>
-          </div>
-            )}
-      </div>  
+            </div>
+          )}
+        </div>
       </div>
 
       <div className={classes.trailerSynopsis}>
         <p className={classes.synopsis}>{animeInfo.synopsis}</p>
-        <div className={classes.trailer}>
-          <iframe
-            title={`${animeInfo.title} trailer`}
-            height="400"
-            src={animeInfo.trailer.embed_url}
-            frameBorder="0"
-            allowFullScreen
-          />
-        </div>
+        {animeInfo.trailer.embed_url ? (
+          <div className={classes.trailer}>
+            <iframe
+              title={`${animeInfo.title} trailer`}
+              height="400"
+              src={animeInfo.trailer.embed_url}
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <div className={classes.trailer}>
+            <p className={classes.rickroll}>If you see this, so there is no trailer for this title. Just enjoy Rick Astley</p>
+            <iframe
+              className={classes.rickrollVideo}
+              height="400"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        )}
       </div>
     </section>
   );

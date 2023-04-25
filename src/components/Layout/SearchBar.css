@@ -18,7 +18,7 @@
     /* border-radius: 20px; */
 }
 
-.option-image {
+/* .option-image {
     position: relative;
     z-index: 5;
     height: 70px;
@@ -27,7 +27,7 @@
 
 .option-text {
     font-size: 16px;
-}
+} */
 
 .select-search-container *,
 .select-search-container *::after,
