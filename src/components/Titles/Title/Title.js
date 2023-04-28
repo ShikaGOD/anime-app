@@ -43,7 +43,6 @@ function Title(props) {
       default:
         break;
     }
-    // setShowDropdown(false);
   };
 
   return ( 

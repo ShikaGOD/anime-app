@@ -1,24 +1,48 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchAnimeList } from '../../store/animeSlice';
+import { useEffect, useState, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchAnimeList } from "../../store/animeSlice";
 import Title from "./Title/Title";
 import classes from "./AnimeList.module.css";
 
-
 function AnimeList() {
-  const titles = useSelector(state => state.anime.animeTitles);
-  const isLoading = useSelector(state => state.anime.isLoading);
+  const [showFilter, setShowFilter] = useState(false);
+  const [filter, setFilter] = useState("bypopularity");
+  const titles = useSelector((state) => state.anime.animeTitles);
+  const isLoading = useSelector((state) => state.anime.isLoading);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    dispatch(fetchAnimeList());
-  }, [dispatch]);
-  
-  const animeList = titles.map((title) => (    
-    <Link to={`/titleInfo/${title.mal_id}`} key={title.mal_id}> 
-      <Title        
+    dispatch(fetchAnimeList(filter));
+  }, [dispatch, filter]);
+
+  const buttonFilterHandler = useCallback(() => {
+    setShowFilter((prevShowFilter) => !prevShowFilter);
+  }, []);
+
+  const filterByStatusHandler = (filterByStatus) => {
+    switch (filterByStatus) {
+      case "Popularity":
+        setFilter("bypopularity");
+        break;
+      case "Upcoming":
+        setFilter("upcoming");
+        break;
+      case "Favorite":
+        setFilter("favorite");
+        break;
+      case "Airing":
+        setFilter("airing");
+        break;
+      default:
+        break;
+    }
+    setShowFilter((prevShowFilter) => !prevShowFilter);
+  };
+
+  const animeList = titles.map((title) => (
+    <Link to={`/titleInfo/${title.mal_id}`} key={title.mal_id}>
+      <Title
         id={title.mal_id}
         image={title.images.jpg.image_url}
         titleName={title.title_english ?? title.title}
@@ -33,7 +57,52 @@ function AnimeList() {
           <div className={classes.spinner} />
         </section>
       ) : (
-        <ul className={classes.container}>{animeList}</ul>
+        <div className={classes.filterContainer}>
+          <button
+            className={classes.buttonFilter}
+            onClick={buttonFilterHandler}
+          >
+            Filter by status
+          </button>
+          {showFilter && (
+            <ul className={classes.filterList}>
+              <li
+                onClick={(event) => {
+                  filterByStatusHandler("Popularity");
+                  event.preventDefault();
+                }}
+              >
+                Popularity
+              </li>
+              <li
+                className={filter === "Upcoming" ? classes.active : ""}
+                onClick={(event) => {
+                  filterByStatusHandler("Upcoming");
+                  event.preventDefault();
+                }}
+              >
+                Upcoming
+              </li>
+              <li
+                onClick={(event) => {
+                  filterByStatusHandler("Favorite");
+                  event.preventDefault();
+                }}
+              >
+                Favorite
+              </li>
+              <li
+                onClick={(event) => {
+                  filterByStatusHandler("Airing");
+                  event.preventDefault();
+                }}
+              >
+                Ongoing
+              </li>
+            </ul>
+          )}
+          <ul className={classes.container}>{animeList}</ul>
+        </div>
       )}
     </section>
   );

@@ -42,3 +42,51 @@
     }
 }
   
+.buttonFilter {
+  width: 18.2%;
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  text-align: left;
+  padding: 10px 0 10px 15px;
+  border-radius: 5px;
+  background-color: rgba(0,50,150,.8);
+  color: #FFF;
+  margin-left: 113px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.buttonFilter:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterContainer {
+  position: relative;
+}
+
+.filterList {
+  width: 18.2%;
+  position: absolute;
+  top: 37px;
+  left: 113px;
+  padding: 15px 20px;
+  background-color: rgba(0,50,150,.8);
+  border-radius: 5px;
+  color: #FFF;
+  z-index: 2;
+}
+
+.filterList li {
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease-out;
+}
+
+.filterList li:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterList li.active {
+  color: green;
+}
