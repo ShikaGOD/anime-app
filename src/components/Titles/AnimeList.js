@@ -67,6 +67,7 @@ function AnimeList() {
           {showFilter && (
             <ul className={classes.filterList}>
               <li
+              className={filter === "bypopularity" ? classes.active : ""}
                 onClick={(event) => {
                   filterByStatusHandler("Popularity");
                   event.preventDefault();
@@ -75,7 +76,7 @@ function AnimeList() {
                 Popularity
               </li>
               <li
-                className={filter === "Upcoming" ? classes.active : ""}
+                className={filter === "upcoming" ? classes.active : ""}
                 onClick={(event) => {
                   filterByStatusHandler("Upcoming");
                   event.preventDefault();
@@ -84,6 +85,7 @@ function AnimeList() {
                 Upcoming
               </li>
               <li
+              className={filter === "favorite" ? classes.active : ""}
                 onClick={(event) => {
                   filterByStatusHandler("Favorite");
                   event.preventDefault();
@@ -92,6 +94,7 @@ function AnimeList() {
                 Favorite
               </li>
               <li
+              className={filter === "airing" ? classes.active : ""}
                 onClick={(event) => {
                   filterByStatusHandler("Airing");
                   event.preventDefault();
