@@ -4,14 +4,14 @@ export const fetchAnimeList = createAsyncThunk(
   "anime/fetchAnimeList",
   async () => {
     const response = await fetch(
-      `https://api.jikan.moe/v4/top/anime?filter=bypopularity`
+      `https://api.jikan.moe/v4/top/anime?filter=airing`
     );
     if (!response.ok) {
       throw new Error("Something went wrong!");
     }
     const responseData = await response.json();
     const { data } = responseData;
-    // console.log(data);
+    console.log(data);
     return data;
   }
 );

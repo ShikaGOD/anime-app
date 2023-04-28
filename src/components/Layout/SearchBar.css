@@ -5,7 +5,7 @@
  */
 .select-search-container {
     --select-search-background: rgba(0,50,150,.8);
-    --select-search-selected: rgba(41, 108, 240, 0.8);
+    --select-search-selected: rgba(240, 160, 41, 0.8);
     --select-search-text: #ffffff;
     --select-search-subtle-text: #6c6f85;
     --select-search-inverted-text: var(--select-search-background);

@@ -79,7 +79,7 @@ function TitleDetails() {
   return (
     <section className={classes.container}>
       <div className={classes.titleInfo}>
-        <h1>{animeInfo.title_english.toUpperCase()}</h1>
+        <h1>{animeInfo.title.toUpperCase()}</h1>
         <div className={classes.genres}>
           {animeInfo.genres.map((genre) => (
             <div className={classes.genre} key={genre.mal_id}>
@@ -149,8 +149,9 @@ function TitleDetails() {
           </div>
         ) : (
           <div className={classes.trailer}>
-            <p className={classes.rickroll}>If you see this, so there is no trailer for this title. Just enjoy Rick Astley</p>
+            <p className={classes.rickroll}>If you see this, so trailer for this title is unavailable. Just enjoy Rick Astley</p>
             <iframe
+              title='RickAstley'
               className={classes.rickrollVideo}
               height="400"
               src="https://www.youtube.com/embed/dQw4w9WgXcQ"

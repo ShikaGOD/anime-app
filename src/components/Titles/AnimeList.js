@@ -21,7 +21,7 @@ function AnimeList() {
       <Title        
         id={title.mal_id}
         image={title.images.jpg.image_url}
-        titleName={title.title_english}
+        titleName={title.title_english ?? title.title}
         episodes={title.episodes}
       />
     </Link>
