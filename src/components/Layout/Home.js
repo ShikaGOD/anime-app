@@ -16,8 +16,8 @@ function Home() {
           className={classes.background}
         />
       </div>
-      <div className={classes.textContainer}>
-        <p className={classes.text}>
+      <article className={classes.textContainer}>
+        <div className={classes.text}>
           <TypewriterComponent
             onInit={(typewriter) => {
               typewriter
@@ -38,8 +38,8 @@ function Home() {
           <div className={classes.buttonContainer} style={{ opacity: showButton ? 1 : 0 }}>
             <button onClick={() => navigate("/list")}>Get started!</button>
           </div>
-        </p>
-      </div>
+        </div>
+      </article>
     </>
   );
 }

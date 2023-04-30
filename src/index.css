@@ -16,10 +16,11 @@ li {
 }
 
 body {
-  font-family: 'Oxanium', monospace ;
+  font-family: 'Oxanium';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('https://i.imgur.com/AF3au7J.jpg');
+  background-position: fixed;
   background-repeat: no-repeat;
   background-size: 100vw;
   background-attachment: fixed;
