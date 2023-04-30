@@ -1,9 +1,11 @@
-import React from "react";
-import { useNavigate  } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./Home.module.css";
+import TypewriterComponent from "typewriter-effect";
 
 function Home() {
   const navigate = useNavigate();
+  const [showButton, setShowButton] = useState(false);
 
   return (
     <>
@@ -16,17 +18,26 @@ function Home() {
       </div>
       <div className={classes.textContainer}>
         <p className={classes.text}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only five
-          centuries, but also the leap into electronic typesetting, remaining
-          essentially unchanged. It was popularised in the 1960s with the release
-          of Letraset sheets containing Lorem Ipsum passages, and more recently
-          with desktop publishing software like Aldus PageMaker including versions
-          of Lorem Ipsum.
-        
-          <button onClick={() => navigate("/list")}>Get started!</button>
+          <TypewriterComponent
+            onInit={(typewriter) => {
+              typewriter
+                .typeString(
+                  "Hello, dear friend! Welcome to AnimeList. Here you can read information about hundreds of anime and watch their trailers. Additionally, you can add anime to your list, rate them, and keep track of watched episodes. Enjoy!"
+                )
+                .callFunction(() => {
+                  console.log("String typed out!");
+                  setShowButton(true);
+                })
+                .start();
+            }}
+            options={{
+              typeSpeed: 200, 
+              autoStart: true,
+            }}
+          />
+          <div className={classes.buttonContainer} style={{ opacity: showButton ? 1 : 0 }}>
+            <button onClick={() => navigate("/list")}>Get started!</button>
+          </div>
         </p>
       </div>
     </>
