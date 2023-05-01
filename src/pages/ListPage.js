@@ -1,5 +1,5 @@
 import React from 'react'
-import AnimeList from '../components/Titles/AnimeList'
+import AnimeList from '../components/Titles/Catalog/AnimeList'
 
 function ListPage() {
   return (
