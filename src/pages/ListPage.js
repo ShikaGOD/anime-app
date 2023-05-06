@@ -1,14 +1,10 @@
-import React from "react";
-import AnimeList from "../components/Titles/Catalog/AnimeList";
-import Paginate from "../components/Titles/Paginate/Paginate";
+import React from 'react'
+import AnimeList from '../components/Titles/Catalog/AnimeList'
 
 function ListPage() {
   return (
-    <>
-      <AnimeList />
-      <Paginate />
-    </>
-  );
+        <AnimeList />
+  )
 }
 
-export default ListPage;
+export default ListPage

@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import classes from "./Paginate.module.css";
 
-function Paginate() {
+function Paginate({ setCurrentPage, currentPage }) {
+  function handlePageClick( {selected} ) {
+    setCurrentPage(selected);
+    console.log(currentPage);
+  }
+
   return (
     <>
-      {/* <Items currentItems={currentItems} /> */}
       <ReactPaginate
         breakLabel="..."
         nextLabel={<span className={classes.nextLabel}>next</span>}
-        // onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
         pageCount={100}
         previousLabel={<span className={classes.nextLabel}>previous</span>}
         containerClassName={classes.paginateContainer}
+        pageClassName={classes.paginateLi}
         renderOnZeroPageCount={null}
       />
     </>

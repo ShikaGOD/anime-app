@@ -2,10 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAnimeList = createAsyncThunk(
   "anime/fetchAnimeList",
-  async ({ filter, type }) => {
-    const typeString = String(type);
+  async ({ filter, type, currentPage }) => {
+    const totalPages = 100;
+    const page = Math.min(currentPage + 1, totalPages);
     const response = await fetch(
-      `https://api.jikan.moe/v4/top/anime?filter=${filter}&limit=24&type=${type}`
+      `https://api.jikan.moe/v4/top/anime?filter=${filter}&limit=24&type=${type}&page=${page}`
     );
     if (!response.ok) {
       throw new Error("Something went wrong!");
@@ -23,7 +24,6 @@ const animeSlice = createSlice({
     animeTitles: [],
     isLoading: true,
     error: null,
-    searchResults: [],
   },
   extraReducers: (builder) => {
     builder

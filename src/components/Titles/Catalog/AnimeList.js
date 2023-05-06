@@ -5,19 +5,22 @@ import { Link } from "react-router-dom";
 import { fetchAnimeList } from "../../../store/animeSlice";
 import Title from "../Title/Title";
 import FilterList from "./FilterList";
+import Paginate from "../Paginate/Paginate";
 
 function AnimeList() {
+  const totalPages = 100;
   const [showFilterByStatus, setShowFilterByStatus] = useState(false);
   const [showFilterByType, setShowFilterByType] = useState(false);
-  const [filter, setFilter] = useState("bypopularity");
-  const [type, setType] = useState("tv");
   const titles = useSelector((state) => state.anime.animeTitles);
   const isLoading = useSelector((state) => state.anime.isLoading);
+  const [filter, setFilter] = useState("bypopularity");
+  const [type, setType] = useState("tv");
+  const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAnimeList({ filter, type }));
-  }, [dispatch, filter, type]);
+    dispatch(fetchAnimeList({ filter, type, currentPage }));
+  }, [dispatch, filter, type, currentPage]);
 
   const buttonFilterByStatusHandler = useCallback(() => {
     setShowFilterByStatus((prevShowFilterByStatus) => !prevShowFilterByStatus);
@@ -80,7 +83,6 @@ function AnimeList() {
     </Link>
   ));
 
-
   return (
     <section className={classes.catalog}>
       {isLoading ? (
@@ -94,11 +96,11 @@ function AnimeList() {
             </button>
             {showFilterByStatus && (
               <FilterList
-              filterClasses={classes.filterStatusList}
-              list={["Popularity", "Upcoming", "Favorite", "Airing"]}
-              activeFilter={filter}
-              onFilterSelect={filterByStatusHandler}
-            />
+                filterClasses={classes.filterStatusList}
+                list={["Popularity", "Upcoming", "Favorite", "Airing"]}
+                activeFilter={filter}
+                onFilterSelect={filterByStatusHandler}
+              />
             )}
             <button
               className={classes.buttonFilterType}
@@ -107,12 +109,12 @@ function AnimeList() {
               Filter by type
             </button>
             {showFilterByType && (
-               <FilterList
-               filterClasses={classes.filterTypeList}
-               list={["TV", "Movie", "OVA", "Special"]}
-               activeFilter={type}
-               onFilterSelect={filterByTypeHandler}
-             />
+              <FilterList
+                filterClasses={classes.filterTypeList}
+                list={["TV", "Movie", "OVA", "Special"]}
+                activeFilter={type}
+                onFilterSelect={filterByTypeHandler}
+              />
             )}
           </div>
           <section className={classes.animeSpinner}>
@@ -152,6 +154,7 @@ function AnimeList() {
             )}
           </div>
           <ul className={classes.animeList}>{animeList}</ul>
+          <Paginate currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </>
       )}
     </section>
