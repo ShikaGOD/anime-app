@@ -80,8 +80,6 @@ function AnimeList() {
     </Link>
   ));
 
-  // const statusClasses = `${classes.filterStatusList}`;
-  // const typeClasses = `${classes.filterTypeList}`;
 
   return (
     <section className={classes.catalog}>

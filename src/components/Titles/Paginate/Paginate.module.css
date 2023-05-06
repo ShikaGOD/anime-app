@@ -1,0 +1,18 @@
+.paginateContainer {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 110px;
+  font-size: 1.5em;
+  background-color: rgba(0, 50, 150, 0.8);
+}
+
+.paginateContainer li {
+  cursor: pointer;
+}
+
+/* .paginateContainer li:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+} */

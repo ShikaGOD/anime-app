@@ -7,10 +7,11 @@ function FilterList({ list, activeFilter, onFilterSelect, filterClasses }) {
         {list.map((item) => (
           <li
             key={item}
-            style={activeFilter === item ? {backgroundColor: 'rgba(0, 23, 68, 0.8)'} : {}}
+            className={activeFilter === item ? classes.active : ''}
             onClick={() => onFilterSelect(item)}
           >
             {item}
+            {console.log(`activeFilter: ${activeFilter}, item: ${item}`)}
           </li>
         ))}
       </ul>
