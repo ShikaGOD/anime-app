@@ -1,9 +1,7 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  useNavigate,
 } from "react-router-dom";
-import { useState, useEffect } from "react";
 import RootLayout from "./pages/RootLayout";
 import ListPage from "./pages/ListPage";
 import Authentication from "./pages/Authentication";
@@ -19,8 +17,8 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/auth", element: <Authentication /> },
       { path: "/my-list", element: <MyListPage /> },
+      { path: "/list", element: <ListPage />},
       { path: "/titleInfo/:titleId", element: <TitleDetails /> },
-      { path: "/list", element: <ListPage /> },
     ],
   },
 ]);

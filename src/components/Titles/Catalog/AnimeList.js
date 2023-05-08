@@ -15,12 +15,12 @@ function AnimeList() {
   const isLoading = useSelector((state) => state.anime.isLoading);
   const [filter, setFilter] = useState("bypopularity");
   const [type, setType] = useState("tv");
-  const [currentPage, setCurrentPage] = useState(0);
+  const [page, setPage] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAnimeList({ filter, type, currentPage }));
-  }, [dispatch, filter, type, currentPage]);
+    dispatch(fetchAnimeList({ filter, type, page }));
+  }, [dispatch, filter, type, page]);
 
   const buttonFilterByStatusHandler = useCallback(() => {
     setShowFilterByStatus((prevShowFilterByStatus) => !prevShowFilterByStatus);
@@ -82,6 +82,14 @@ function AnimeList() {
       />
     </Link>
   ));
+
+  function handlePageChange(direction) {
+    if (direction === "next") {
+      setPage(page + 1);
+    } else {
+      setPage(page - 1);
+    }
+  }
 
   return (
     <section className={classes.catalog}>
@@ -154,7 +162,11 @@ function AnimeList() {
             )}
           </div>
           <ul className={classes.animeList}>{animeList}</ul>
-          <Paginate currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          <Paginate
+            page={page}
+            changePage={handlePageChange}
+            totalPages={totalPages}
+          />
         </>
       )}
     </section>

@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAnimeList = createAsyncThunk(
   "anime/fetchAnimeList",
-  async ({ filter, type, currentPage }) => {
-    const totalPages = 100;
-    const page = Math.min(currentPage + 1, totalPages);
+  async ({ filter, type, page }) => {
+    // const totalPages = 100;
+    // const page = Math.min(currentPage + 1, totalPages);
     const response = await fetch(
       `https://api.jikan.moe/v4/top/anime?filter=${filter}&limit=24&type=${type}&page=${page}`
     );
