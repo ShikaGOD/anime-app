@@ -1,25 +1,22 @@
 import ReactPaginate from "react-paginate";
 import classes from "./Paginate.module.css";
 
-function Paginate({ changePage, page, totalPages, onBreakLabelClick  }) {
+function Paginate({ currentPage, onPageChange, totalPages }) {
+
+  const handlePageClick = (data) => {
+    onPageChange(data);
+  };
 
   const handleBreakLabelClick = (e) => {
     e.preventDefault();
-    onBreakLabelClick(page + 1); // переходити до наступної сторінки в діапазоні
   };
 
   return (
     <>
       <ReactPaginate
-        breakLabel={<a href="/" onClick={handleBreakLabelClick}>...</a>}
+        breakLabel={<a href='#' onClick={handleBreakLabelClick}>...</a>}
         nextLabel={<span className={classes.nextLabel}>next</span>}
-        onPageChange={(e) => {
-          if (e.selected > page - 1) {
-            changePage("next");
-          } else {
-            changePage("previous");
-          }
-        }}
+        onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={totalPages}
@@ -27,7 +24,7 @@ function Paginate({ changePage, page, totalPages, onBreakLabelClick  }) {
         containerClassName={classes.paginateContainer}
         pageClassName={classes.paginateLi}
         renderOnZeroPageCount={null}
-        forcePage={page - 1}
+        forcePage={currentPage  - 1}
       />
     </>
   );

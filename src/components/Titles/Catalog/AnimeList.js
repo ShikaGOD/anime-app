@@ -8,19 +8,22 @@ import FilterList from "./FilterList";
 import Paginate from "../Paginate/Paginate";
 
 function AnimeList() {
-  const totalPages = 100;
   const [showFilterByStatus, setShowFilterByStatus] = useState(false);
   const [showFilterByType, setShowFilterByType] = useState(false);
   const titles = useSelector((state) => state.anime.animeTitles);
+  const totalPages = useSelector((state) => state.anime.totalPages);
+  console.log(totalPages);
+  // console.log(titles);
   const isLoading = useSelector((state) => state.anime.isLoading);
   const [filter, setFilter] = useState("bypopularity");
   const [type, setType] = useState("tv");
-  const [page, setPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAnimeList({ filter, type, page }));
-  }, [dispatch, filter, type, page]);
+    dispatch(fetchAnimeList({ filter, type, page: currentPage }));
+  }, [dispatch, filter, type, currentPage]);
+  // console.log(totalPages);
 
   const buttonFilterByStatusHandler = useCallback(() => {
     setShowFilterByStatus((prevShowFilterByStatus) => !prevShowFilterByStatus);
@@ -83,13 +86,9 @@ function AnimeList() {
     </Link>
   ));
 
-  function handlePageChange(direction) {
-    if (direction === "next") {
-      setPage(page + 1);
-    } else {
-      setPage(page - 1);
-    }
-  }
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected + 1);
+  };
 
   return (
     <section className={classes.catalog}>
@@ -163,8 +162,8 @@ function AnimeList() {
           </div>
           <ul className={classes.animeList}>{animeList}</ul>
           <Paginate
-            page={page}
-            changePage={handlePageChange}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
             totalPages={totalPages}
           />
         </>

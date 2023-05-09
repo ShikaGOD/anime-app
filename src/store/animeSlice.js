@@ -3,8 +3,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchAnimeList = createAsyncThunk(
   "anime/fetchAnimeList",
   async ({ filter, type, page }) => {
-    // const totalPages = 100;
-    // const page = Math.min(currentPage + 1, totalPages);
     const response = await fetch(
       `https://api.jikan.moe/v4/top/anime?filter=${filter}&limit=24&type=${type}&page=${page}`
     );
@@ -12,9 +10,12 @@ export const fetchAnimeList = createAsyncThunk(
       throw new Error("Something went wrong!");
     }
     const responseData = await response.json();
-    const { data } = responseData;
-    // console.log(data);
-    return data;
+    const { data, pagination } = responseData;
+    const totalPages = pagination.last_visible_page
+    // console.log(totalPages);
+    // console.log(data, pagination);
+    console.log(responseData);
+    return responseData;
   }
 );
 
@@ -22,6 +23,7 @@ const animeSlice = createSlice({
   name: "anime",
   initialState: {
     animeTitles: [],
+    totalPages: 0,
     isLoading: true,
     error: null,
   },
@@ -33,7 +35,8 @@ const animeSlice = createSlice({
       })
       .addCase(fetchAnimeList.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.animeTitles = action.payload;
+        state.animeTitles = action.payload.data;
+        state.totalPages = action.payload.pagination.last_visible_page;
       })
       .addCase(fetchAnimeList.rejected, (state, action) => {
         state.isLoading = false;
