@@ -12,8 +12,6 @@ function AnimeList() {
   const [showFilterByType, setShowFilterByType] = useState(false);
   const titles = useSelector((state) => state.anime.animeTitles);
   const totalPages = useSelector((state) => state.anime.totalPages);
-  console.log(totalPages);
-  // console.log(titles);
   const isLoading = useSelector((state) => state.anime.isLoading);
   const [filter, setFilter] = useState("bypopularity");
   const [type, setType] = useState("tv");
@@ -23,7 +21,6 @@ function AnimeList() {
   useEffect(() => {
     dispatch(fetchAnimeList({ filter, type, page: currentPage }));
   }, [dispatch, filter, type, currentPage]);
-  // console.log(totalPages);
 
   const buttonFilterByStatusHandler = useCallback(() => {
     setShowFilterByStatus((prevShowFilterByStatus) => !prevShowFilterByStatus);

@@ -14,16 +14,20 @@ function Paginate({ currentPage, onPageChange, totalPages }) {
   return (
     <>
       <ReactPaginate
-        breakLabel={<a href='#' onClick={handleBreakLabelClick}>...</a>}
-        nextLabel={<span className={classes.nextLabel}>next</span>}
+        breakLabel="..."
+        nextLabel=">"
+        previousLabel="<"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={totalPages}
-        previousLabel={<span className={classes.nextLabel}>previous</span>}
         containerClassName={classes.paginateContainer}
         pageClassName={classes.paginateLi}
         renderOnZeroPageCount={null}
+        activeClassName={classes.active}
+        breakClassName={classes.breakLabel}
+        nextClassName={classes.nextLabel}
+        previousClassName={classes.previousLabel}
         forcePage={currentPage  - 1}
       />
     </>
