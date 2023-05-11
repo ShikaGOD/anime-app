@@ -3,7 +3,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
-import ListPage from "./pages/ListPage";
+import CatalogPage from "./pages/CatalogPage";
 import Authentication from "./pages/Authentication";
 import MyListPage from "./pages/MyListPage";
 import TitleDetails from "./components/Titles/TitleDetails/TitleDetails";
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/auth", element: <Authentication /> },
       { path: "/my-list", element: <MyListPage /> },
-      { path: "/list", element: <ListPage />},
-      { path: "/titleInfo/:titleId", element: <TitleDetails /> },
+      { path: "/catalog", element: <CatalogPage />},
+      { path: "/catalog/:titleId", element: <TitleDetails /> },
     ],
   },
 ]);

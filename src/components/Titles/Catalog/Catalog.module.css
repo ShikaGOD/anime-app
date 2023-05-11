@@ -1,0 +1,138 @@
+.catalog {
+  position: relative;
+  z-index: 0;
+}
+
+.animeList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin: 50px 100px;
+  font-size: 24px;
+  font-weight: bold; 
+}
+
+
+.animeList p {
+  padding-top: 16px;
+  text-align: center;
+}
+
+
+.animeSpinner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.animeSpinner .spinner {
+  width: 300px;
+  height: 300px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7d/Mangekyou_Sharingan_Madara.svg');
+  animation: spin 1s ease-in-out infinite;
+}
+
+  
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+    }
+}
+
+.filterContainer {
+  position: relative;
+  margin: 50px 100px;
+  padding: 12px;
+  border-radius: 5px;
+}
+  
+.buttonFilterStatus {
+  width: 18.3%;
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  text-align: left;
+  padding: 0.6em 2em;
+  border-radius: 5px;
+  background-color: rgba(0,50,150,.8);
+  color: #FFF;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.buttonFilterStatus:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterStatusList {
+  width: 18%;
+  position: absolute;
+  padding: 15px 20px;
+  background-color: rgba(0,50,150,.8);
+  border-radius: 5px;
+  color: #FFF;
+  z-index: 2;
+}
+
+.filterStatusList li {
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease-out;
+}
+
+.filterStatusList li:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterStatusList li.active {
+  font-weight: bold;
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.buttonFilterType {
+  width: 18.2%;
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  text-align: left;
+  padding: 0.6em 2em;
+  border-radius: 5px;
+  background-color: rgba(0,50,150,.8);
+  color: #FFF;
+  margin-left: 10%;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.buttonFilterType:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterTypeList {
+  width: 18%;
+  position: absolute;
+  top: 50px;
+  left: 28.7%;
+  padding: 15px 20px;
+  background-color: rgba(0,50,150,.8);
+  border-radius: 5px;
+  color: #FFF;
+  z-index: 2;
+}
+
+.filterTypeList li {
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.3s ease-out;
+}
+
+.filterTypeList li:hover {
+  background-color: rgba(0, 23, 68, 0.8);
+}
+
+.filterTypeList li.active {
+  font-weight: bold;
+  background-color: rgba(0, 23, 68, 0.8);
+}
