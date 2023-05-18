@@ -23,7 +23,8 @@ function SearchBar() {
 
   function handleChange(value) {
     setSelectedValue(value);
-    navigate(`/titleInfo/${value}`);
+    navigate(`/catalog/${value}`);
+    console.log(value);
   }
 
   return (

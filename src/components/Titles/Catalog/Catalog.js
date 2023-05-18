@@ -1,10 +1,9 @@
 import classes from "./Catalog.module.css";
 import Title from "../Title/Title";
-import FilterList from "./FilterList";
 import Paginate from "../Paginate/Paginate";
 import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { fetchAnimeList } from "../../../store/animeSlice";
 import slugify from "slugify";
 
@@ -14,10 +13,26 @@ function Catalog() {
   const titles = useSelector((state) => state.anime.animeTitles);
   const totalPages = useSelector((state) => state.anime.totalPages);
   const isLoading = useSelector((state) => state.anime.isLoading);
-  const [filter, setFilter] = useState("bypopularity");
-  const [type, setType] = useState("tv");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filter = searchParams.get("filter") || "bypopularity";
+  const type = searchParams.get("type") || "tv";
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const updateFilter = (newFilter) => {
+    setSearchParams((params) => {
+      params.set('filter', newFilter);
+      return params;
+    });
+  };
+
+  const updateType = (newType) => {
+    setSearchParams((params) => {
+      params.set('type', newType);
+      return params;
+    });
+  };
 
   useEffect(() => {
     dispatch(fetchAnimeList({ filter, type, page: currentPage }));
@@ -36,16 +51,16 @@ function Catalog() {
   const filterByStatusHandler = (filterByStatus) => {
     switch (filterByStatus) {
       case "Popularity":
-        setFilter("bypopularity");
+        updateFilter("bypopularity");
         break;
       case "Upcoming":
-        setFilter("upcoming");
+        updateFilter("upcoming");
         break;
       case "Favorite":
-        setFilter("favorite");
+        updateFilter("favorite");
         break;
       case "Airing":
-        setFilter("airing");
+        updateFilter("airing");
         break;
       default:
         break;
@@ -56,16 +71,16 @@ function Catalog() {
   const filterByTypeHandler = (filterByType) => {
     switch (filterByType) {
       case "TV":
-        setType("tv");
+        updateType("tv");
         break;
       case "Movie":
-        setType("movie");
+        updateType("movie");
         break;
       case "OVA":
-        setType("ova");
+        updateType("ova");
         break;
       case "Special":
-        setType("special");
+        updateType("special");
         break;
       default:
         break;
@@ -74,7 +89,7 @@ function Catalog() {
   };
 
   const animeList = titles.map((title) => {
-    const slug = slugify(title.title, { lower: true });
+    // const slug = slugify(title.title, { lower: true });
     return (
       <Link to={`/catalog/${title.mal_id}`} key={title.mal_id}>
         <Title
@@ -102,28 +117,13 @@ function Catalog() {
             >
               Filter by status
             </button>
-            {showFilterByStatus && (
-              <FilterList
-                filterClasses={classes.filterStatusList}
-                list={["Popularity", "Upcoming", "Favorite", "Airing"]}
-                activeFilter={filter}
-                onFilterSelect={filterByStatusHandler}
-              />
-            )}
+
             <button
               className={classes.buttonFilterType}
               onClick={buttonFilterByTypeHandler}
             >
               Filter by type
             </button>
-            {showFilterByType && (
-              <FilterList
-                filterClasses={classes.filterTypeList}
-                list={["TV", "Movie", "OVA", "Special"]}
-                activeFilter={type}
-                onFilterSelect={filterByTypeHandler}
-              />
-            )}
           </div>
           <section className={classes.animeSpinner}>
             <div className={classes.spinner} />
@@ -139,12 +139,40 @@ function Catalog() {
               Filter by status
             </button>
             {showFilterByStatus && (
-              <FilterList
-                filterClasses={classes.filterStatusList}
-                list={["Popularity", "Upcoming", "Favorite", "Airing"]}
-                activeFilter={filter}
-                onFilterSelect={filterByStatusHandler}
-              />
+              <ul className={classes.filterStatusList}>
+                <li
+                  className={filter === "bypopularity" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByStatusHandler("Popularity");
+                    // navigate("filter?status=bypopularity");
+                    event.preventDefault();
+                  }}
+                >
+                  Popularity
+                </li>
+
+                <li
+                  className={filter === "upcoming" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByStatusHandler("Upcoming");
+                    // navigate("filter?status=upcoming");
+                    event.preventDefault();
+                  }}
+                >
+                  Upcoming
+                </li>
+
+                <li
+                  className={filter === "favorite" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByStatusHandler("Favorite");
+                    // navigate('filter?status=favorite');
+                    event.preventDefault();
+                  }}
+                >
+                  Favorite
+                </li>
+              </ul>
             )}
             <button
               className={classes.buttonFilterType}
@@ -153,12 +181,44 @@ function Catalog() {
               Filter by type
             </button>
             {showFilterByType && (
-              <FilterList
-                filterClasses={classes.filterTypeList}
-                list={["TV", "Movie", "OVA", "Special"]}
-                activeFilter={type}
-                onFilterSelect={filterByTypeHandler}
-              />
+              <ul className={classes.filterTypeList}>
+                <li
+                  className={type === "tv" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByTypeHandler("TV");
+                    event.preventDefault();
+                  }}
+                >
+                  TV
+                </li>
+                <li
+                  className={type === "movie" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByTypeHandler("Movie");
+                    event.preventDefault();
+                  }}
+                >
+                  Movie
+                </li>
+                <li
+                  className={type === "ova" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByTypeHandler("OVA");
+                    event.preventDefault();
+                  }}
+                >
+                  OVA
+                </li>
+                <li
+                  className={type === "special" ? classes.active : ""}
+                  onClick={(event) => {
+                    filterByTypeHandler("Special");
+                    event.preventDefault();
+                  }}
+                >
+                  Special
+                </li>
+              </ul>
             )}
           </div>
           <ul className={classes.animeList}>{animeList}</ul>
