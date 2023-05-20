@@ -17,6 +17,7 @@ function Catalog() {
   const filter = searchParams.get("filter") || "bypopularity";
   const type = searchParams.get("type") || "tv";
   const [currentPage, setCurrentPage] = useState(1);
+  // const currentPageParam  = Number(searchParams.get('page')) || 1;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -102,8 +103,13 @@ function Catalog() {
     );
   });
 
-  const handlePageChange = ({ selected }) => {
-    setCurrentPage(selected + 1);
+  const pageChangeHandler = ({ selected }) => {
+    const newPage = selected + 1;
+  setSearchParams((params) => {
+    params.set('page', newPage.toString());
+    return params;
+  });
+  setCurrentPage(newPage);
   };
 
   return (
@@ -224,7 +230,7 @@ function Catalog() {
           <ul className={classes.animeList}>{animeList}</ul>
           <Paginate
             currentPage={currentPage}
-            onPageChange={handlePageChange}
+            onPageChange={pageChangeHandler}
             totalPages={totalPages}
           />
         </>

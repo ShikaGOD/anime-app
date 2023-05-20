@@ -36,7 +36,7 @@ function Home() {
             }}
           />
           <div className={classes.buttonContainer} style={{ opacity: showButton ? 1 : 0 }}>
-            <button onClick={() => navigate("/list")}>Get started!</button>
+            <button onClick={() => navigate("/catalog")}>Get started!</button>
           </div>
         </div>
       </article>
