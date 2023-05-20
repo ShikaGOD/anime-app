@@ -7,13 +7,11 @@ import { addToWatched } from "../../../store/animeSlices/watchedAnimeSlice";
 import { addToPostponed } from "../../../store/animeSlices/postponedAnimeSlice";
 import { useParams } from "react-router-dom";
 
-function TitleDetails() {
-  const { titleId } = useParams();
-  const [animeInfo, setAnimeInfo] = useState(null);
+function TitleDetails({animeInfo}) {
   const [showDropdown, setShowDropdown] = useState(false);
   const isLoading = useSelector((state) => state.anime.isLoading);
   const dispatch = useDispatch();
-
+  
   const addButtonHandler = () => {
     setShowDropdown((prevShowDropdown) => !prevShowDropdown);
   };
@@ -56,25 +54,14 @@ function TitleDetails() {
     setShowDropdown(false);
   };
 
-  useEffect(() => {
-    const fetchAnimeInfo = async () => {
-      const response = await fetch(`https://api.jikan.moe/v4/anime/${titleId}`);
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const responseData = await response.json();
-      setAnimeInfo(responseData.data);
-    };
-    fetchAnimeInfo();
-  }, [titleId]);
 
-  if (isLoading || !animeInfo) {
-    return (
-      <section className={classes.animeSpinner}>
-        <div className={classes.spinner} />
-      </section>
-    );
-  }
+  // if (isLoading || !animeInfo) {
+  //   return (
+  //     <section className={classes.animeSpinner}>
+  //       <div className={classes.spinner} />
+  //     </section>
+  //   );
+  // }
 
   return (
     <section className={classes.container}>

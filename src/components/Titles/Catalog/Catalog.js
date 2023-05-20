@@ -3,11 +3,12 @@ import Title from "../Title/Title";
 import Paginate from "../Paginate/Paginate";
 import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams, useParams } from "react-router-dom";
 import { fetchAnimeList } from "../../../store/animeSlice";
 import slugify from "slugify";
 
 function Catalog() {
+  const { titleId } = useParams();
   const [showFilterByStatus, setShowFilterByStatus] = useState(false);
   const [showFilterByType, setShowFilterByType] = useState(false);
   const titles = useSelector((state) => state.anime.animeTitles);
@@ -16,21 +17,21 @@ function Catalog() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = searchParams.get("filter") || "bypopularity";
   const type = searchParams.get("type") || "tv";
-  const [currentPage, setCurrentPage] = useState(1);
-  // const currentPageParam  = Number(searchParams.get('page')) || 1;
+  const currentPageParam = Number(searchParams.get("page")) || 1;
+  const [currentPage, setCurrentPage] = useState(currentPageParam);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const updateFilter = (newFilter) => {
     setSearchParams((params) => {
-      params.set('filter', newFilter);
+      params.set("filter", newFilter);
       return params;
     });
   };
 
   const updateType = (newType) => {
     setSearchParams((params) => {
-      params.set('type', newType);
+      params.set("type", newType);
       return params;
     });
   };
@@ -88,7 +89,7 @@ function Catalog() {
     }
     setShowFilterByType((prevShowFilterByType) => !prevShowFilterByType);
   };
-
+  
   const animeList = titles.map((title) => {
     // const slug = slugify(title.title, { lower: true });
     return (
@@ -105,11 +106,11 @@ function Catalog() {
 
   const pageChangeHandler = ({ selected }) => {
     const newPage = selected + 1;
-  setSearchParams((params) => {
-    params.set('page', newPage.toString());
-    return params;
-  });
-  setCurrentPage(newPage);
+    setSearchParams((params) => {
+      params.set("page", newPage.toString());
+      return params;
+    });
+    setCurrentPage(newPage);
   };
 
   return (
