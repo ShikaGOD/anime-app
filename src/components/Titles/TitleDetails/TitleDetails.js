@@ -7,7 +7,7 @@ import { addToWatched } from "../../../store/animeSlices/watchedAnimeSlice";
 import { addToPostponed } from "../../../store/animeSlices/postponedAnimeSlice";
 import { useParams } from "react-router-dom";
 
-function TitleDetails({animeInfo}) {
+function TitleDetails( {animeInfo} ) {
   const [showDropdown, setShowDropdown] = useState(false);
   const isLoading = useSelector((state) => state.anime.isLoading);
   const dispatch = useDispatch();

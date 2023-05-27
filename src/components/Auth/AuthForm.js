@@ -1,4 +1,5 @@
 import classes from "./AuthForm.module.css";
+import { useEffect } from "react";
 import useInput from "../hooks/use-input";
 import { Form, Link, useSearchParams, useNavigate } from "react-router-dom";
 import {
@@ -7,7 +8,7 @@ import {
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserSessionPersistence, onAuthStateChanged } from "firebase/auth";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const isEmail = (value) => {
@@ -15,6 +16,28 @@ const isEmail = (value) => {
   return emailRegex.test(value);
 };
 const isPassword = (value) => value.length >= 6;
+
+const auth = getAuth();
+
+// Встановлюємо тип збереження персистентності сеансу
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    // Ініціалізуємо прослуховувач стану автентифікації користувача
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Користувач авторизований
+        console.log("User is signed in:", user);
+        // Виконайте додаткові дії, які потрібно зробити, коли користувач авторизований
+      } else {
+        // Користувач не авторизований
+        console.log("User is signed out");
+        // Виконайте додаткові дії, які потрібно зробити, коли користувач не авторизований
+      }
+    });
+  })
+  .catch((error) => {
+    console.log("Error setting persistence:", error);
+  });
 
 function RegistrationForm() {
   // console.log("rerender");
@@ -97,7 +120,8 @@ function RegistrationForm() {
         // ..
       });
   };
-  const auth = getAuth();
+  // const auth = getAuth();
+ 
   const user = auth.currentUser;
 
   const onLoginHandler = (e) => {
@@ -116,6 +140,8 @@ function RegistrationForm() {
         console.log(errorCode, errorMessage);
       });
   };
+
+ 
 
   const usernameClasses = usernameHasError
     ? `${classes["form-control"]} ${classes.invalid}`

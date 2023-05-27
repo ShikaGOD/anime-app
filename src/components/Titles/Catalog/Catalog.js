@@ -8,7 +8,7 @@ import { fetchAnimeList } from "../../../store/animeSlice";
 import slugify from "slugify";
 
 function Catalog() {
-  const { titleId } = useParams();
+  // const { titleId } = useParams();
   const [showFilterByStatus, setShowFilterByStatus] = useState(false);
   const [showFilterByType, setShowFilterByType] = useState(false);
   const titles = useSelector((state) => state.anime.animeTitles);
