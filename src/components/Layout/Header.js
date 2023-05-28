@@ -48,7 +48,11 @@ function Header() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <section className={classes.animeSpinner}>
+        <div className={classes.spinner} />
+      </section>
+    );
   }
 
   return (

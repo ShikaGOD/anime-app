@@ -14,7 +14,7 @@ export const fetchAnimeList = createAsyncThunk(
     const totalPages = pagination.last_visible_page
     // console.log(totalPages);
     // console.log(data, pagination);
-    console.log(responseData);
+    // console.log(responseData);
     return responseData;
   }
 );

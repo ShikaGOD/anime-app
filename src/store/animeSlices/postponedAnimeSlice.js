@@ -4,9 +4,20 @@ function checkIfAdded(state, id) {
   return state.some(anime => anime.id === id);
 }
 
+const userId = localStorage.getItem("userId");
+
+function getStoredAnimeList(userId, key) {
+  const storedList = localStorage.getItem(`${userId}_${key}`);
+  return storedList ? JSON.parse(storedList) : [];
+}
+
+function updateStoredAnimeList(userId, key, list) {
+  localStorage.setItem(`${userId}_${key}`, JSON.stringify(list));
+}
+
 const postponedAnimeSlice = createSlice({
     name: 'postponedAnime',
-    initialState: [],    
+    initialState: getStoredAnimeList(userId, 'postponedAnime'),    
     reducers: {
       addToPostponed(state, action) {
         const { id, title, image, episodes } = action.payload;
@@ -19,6 +30,7 @@ const postponedAnimeSlice = createSlice({
             episodesWatched: 0,
             score: "-"
         });
+        updateStoredAnimeList(userId, 'postponedAnime', state);
       }
       },
       updatePostponedAnime(state, action) {
@@ -27,6 +39,7 @@ const postponedAnimeSlice = createSlice({
         if (anime) {
           anime.episodesWatched = episodesWatched;
           anime.score = score;
+          updateStoredAnimeList(userId, 'postponedAnime', state);
         }
       }
   }

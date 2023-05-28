@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import classes from "./MyList.module.css"
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { updateWatchedAnime } from '../../store/animeSlices/watchedAnimeSlice';
-import { updatePlannedAnime } from '../../store/animeSlices/plannedAnimeSlice';
-import { updatePostponedAnime } from '../../store/animeSlices/postponedAnimeSlice';
-
+import React, { useState, useEffect } from "react";
+import classes from "./MyList.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { updateWatchedAnime } from "../../store/animeSlices/watchedAnimeSlice";
+import { updatePlannedAnime } from "../../store/animeSlices/plannedAnimeSlice";
+import { updatePostponedAnime } from "../../store/animeSlices/postponedAnimeSlice";
 
 function MyList() {
+  const [myanimeList, setMyAnimeList] = useState([]);
+
   const dispatch = useDispatch();
 
-  const [activeList, setActiveList] = useState('watchedAnime');
+  const [activeList, setActiveList] = useState("watchedAnime");
   const [editEpisodesId, setEditEpisodesId] = useState(null);
   const [editScoreId, setEditScoreId] = useState(null);
   const plannedAnime = useSelector((state) => state.plannedAnime);
@@ -18,9 +19,9 @@ function MyList() {
   const postponedAnime = useSelector((state) => state.postponedAnime);
 
   let activeAnimeList;
-  if (activeList === 'plannedAnime') {
+  if (activeList === "plannedAnime") {
     activeAnimeList = plannedAnime;
-  } else if (activeList === 'postponedAnime') {
+  } else if (activeList === "postponedAnime") {
     activeAnimeList = postponedAnime;
   } else {
     activeAnimeList = watchedAnime;
@@ -29,56 +30,62 @@ function MyList() {
   const onInputHandler = (event, anime) => {
     const episodesWatched = Number(event.target.value);
     if (episodesWatched >= 0 && episodesWatched <= anime.episodes) {
-      const updatedAnime = { ...anime, episodesWatched};
-      if (activeList === 'watchedAnime') {
+      const updatedAnime = { ...anime, episodesWatched };
+      if (activeList === "watchedAnime") {
         dispatch(updateWatchedAnime(updatedAnime));
-      } else if (activeList === 'plannedAnime') {
+      } else if (activeList === "plannedAnime") {
         dispatch(updatePlannedAnime(updatedAnime));
         console.log(updatedAnime);
-      } else if (activeList === 'postponedAnime') {
-        dispatch(updatePostponedAnime(updatedAnime));        
+      } else if (activeList === "postponedAnime") {
+        dispatch(updatePostponedAnime(updatedAnime));
       }
     }
     console.log(episodesWatched);
   };
-  
+
   const onScoreChangeHandler = (event, anime) => {
     const score = Number(event.target.value);
     const episodesWatched = anime.episodesWatched;
     if (score >= 0 && score <= 10) {
       const updatedAnime = { ...anime, score };
-      if (activeList === 'watchedAnime') {
-      dispatch(updateWatchedAnime(updatedAnime));
-      console.log(updatedAnime);
-      } else if (activeList === 'plannedAnime') {
-      dispatch(updatePlannedAnime(updatedAnime));
-      console.log(updatedAnime);
-      } else if (activeList === 'postponedAnime') {
-      dispatch(updatePostponedAnime(updatedAnime));
-      console.log(updatedAnime);
+      if (activeList === "watchedAnime") {
+        dispatch(updateWatchedAnime(updatedAnime));
+        console.log(updatedAnime);
+      } else if (activeList === "plannedAnime") {
+        dispatch(updatePlannedAnime(updatedAnime));
+        console.log(updatedAnime);
+      } else if (activeList === "postponedAnime") {
+        dispatch(updatePostponedAnime(updatedAnime));
+        console.log(updatedAnime);
       }
-      }
+    }
   };
-  
+
   return (
     <>
       <div className={classes.myProfileContainer}>
         <div className={classes.listNav}>
           <Link
-            className={activeList === 'watchedAnime' ? classes.activeButton : ''}
-            onClick={() => setActiveList('watchedAnime')}
+            className={
+              activeList === "watchedAnime" ? classes.activeButton : ""
+            }
+            onClick={() => setActiveList("watchedAnime")}
           >
             WATCHED
           </Link>
           <Link
-            className={activeList === 'plannedAnime' ? classes.activeButton : ''}
-            onClick={() => setActiveList('plannedAnime')}
+            className={
+              activeList === "plannedAnime" ? classes.activeButton : ""
+            }
+            onClick={() => setActiveList("plannedAnime")}
           >
             PLANNED
           </Link>
           <Link
-            className={activeList === 'postponedAnime' ? classes.activeButton : ''}
-            onClick={() => setActiveList('postponedAnime')}
+            className={
+              activeList === "postponedAnime" ? classes.activeButton : ""
+            }
+            onClick={() => setActiveList("postponedAnime")}
           >
             POSTPONED
           </Link>
@@ -92,13 +99,17 @@ function MyList() {
             </tr>
           </thead>
           <tbody className={classes.tbody}>
-            {activeAnimeList.map(anime => (
-              <tr key={anime.id} >              
-                <td>                 
-                    <img src={anime.image} alt={anime.title} className={classes.animeImage} />
-                    <Link to={`/titleInfo/${anime.id}`}>
-                      <span>{anime.title}</span>                                                      
-                    </Link>
+            {activeAnimeList.map((anime) => (
+              <tr key={anime.id}>
+                <td>
+                  <img
+                    src={anime.image}
+                    alt={anime.title}
+                    className={classes.animeImage}
+                  />
+                  <Link to={`/titleInfo/${anime.id}`}>
+                    <span>{anime.title}</span>
+                  </Link>
                 </td>
                 <td>
                   {editScoreId === anime.id ? (
@@ -109,8 +120,8 @@ function MyList() {
                       min={0}
                       max={10}
                       onChange={(event) => onScoreChangeHandler(event, anime)}
-                      onMouseLeave={() => setEditScoreId(null)}   
-                      onFocus={(e) => e.target.select()}           
+                      onMouseLeave={() => setEditScoreId(null)}
+                      onFocus={(e) => e.target.select()}
                     />
                   ) : (
                     <span
@@ -119,8 +130,8 @@ function MyList() {
                     >
                       {anime.score}
                     </span>
-                    )}
-                  </td>
+                  )}
+                </td>
                 <td>
                   {editEpisodesId === anime.id ? (
                     <input
@@ -140,7 +151,7 @@ function MyList() {
                       {anime.episodesWatched} / {anime.episodes}
                     </span>
                   )}
-                </td>              
+                </td>
               </tr>
             ))}
           </tbody>

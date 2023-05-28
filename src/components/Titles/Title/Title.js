@@ -30,8 +30,15 @@ function Title(props) {
   };
 
   const dropdownItemHandler = (list) => {
+    const animeData = {
+      id: props.id,
+      title: props.titleName,
+      image: props.image,
+      episodes: props.episodes,
+      isAdded: true,
+    };
     switch (list) {
-      case "watched":
+      case "watched":        
         dispatchList({ type: "ADD_TO_WATCHED" });
         dispatch(
           addToWatched({
@@ -42,7 +49,7 @@ function Title(props) {
           })
         );
         break;
-      case "planned":
+      case "planned":        
         dispatchList({ type: "ADD_TO_PLANNED" });
         dispatch(
           addToPlanned({

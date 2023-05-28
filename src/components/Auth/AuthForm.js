@@ -1,5 +1,4 @@
 import classes from "./AuthForm.module.css";
-import { useEffect } from "react";
 import useInput from "../hooks/use-input";
 import { Form, Link, useSearchParams, useNavigate } from "react-router-dom";
 import {
@@ -19,19 +18,13 @@ const isPassword = (value) => value.length >= 6;
 
 const auth = getAuth();
 
-// Встановлюємо тип збереження персистентності сеансу
 setPersistence(auth, browserSessionPersistence)
   .then(() => {
-    // Ініціалізуємо прослуховувач стану автентифікації користувача
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Користувач авторизований
         console.log("User is signed in:", user);
-        // Виконайте додаткові дії, які потрібно зробити, коли користувач авторизований
       } else {
-        // Користувач не авторизований
         console.log("User is signed out");
-        // Виконайте додаткові дії, які потрібно зробити, коли користувач не авторизований
       }
     });
   })
@@ -109,15 +102,15 @@ function RegistrationForm() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
-        // navigate("/auth?mode=login")
-        // ...
+        const userId = user.uid
+        localStorage.setItem('userId', userId);
+        console.log(userId);
+        navigate("/auth?mode=login")
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ..
       });
   };
   // const auth = getAuth();
