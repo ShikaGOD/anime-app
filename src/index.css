@@ -20,9 +20,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('https://i.imgur.com/AF3au7J.jpg');
-  background-position: fixed;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 100vw;
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -39,6 +39,7 @@ body::after {
   transition: all .25s ease;
   z-index: -1;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -11,9 +11,9 @@ function Home() {
     <>
       <div className={classes.homeContainer}>
         <img
+          className={classes.background}
           src="https://images6.alphacoders.com/774/774850.jpg"
           alt="home-background"
-          className={classes.background}
         />
       </div>
       <article className={classes.textContainer}>
