@@ -9,9 +9,9 @@ import { onAuthStateChanged } from "firebase/auth";
 import { logout, login } from "../../store/authSlice";
 
 function Header() {
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(true);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -54,44 +54,47 @@ function Header() {
       </section>
     );
   }
+  
 
   return (
-    <header className={classes.mainHeader}>
-      <div>
-        <Link to="/">
-          <h1>AnimeList</h1>
-        </Link>
-        <ul className={classes.nav}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/catalog?filter=bypopularity&type=tv&page=1">
-              Catalog
-            </Link>
-          </li>
-        </ul>
-      </div>
-      {location.pathname !== "/" && <SearchBar />}
-      <div>
-        {isLoggedIn ? (
-          <>
-            <Link to="/my-list">
-              <Button>My List</Button>
-            </Link>
-            <Button onClick={onLogoutHandler}>Sign out</Button>
-          </>
-        ) : (
-          <>
-            <Link to="/auth?mode=login">
-              <Button>Log in</Button>
-            </Link>
-            <Link to="/auth?mode=signup">
-              <Button>Sign up</Button>
-            </Link>
-          </>
-        )}
-      </div>
+    <header>
+      <nav  className={classes.mainHeader}>
+        <div>
+          <Link to="/">
+            <h1>AnimeList</h1>
+          </Link>
+          <ul className={classes.nav}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/catalog?filter=bypopularity&type=tv&page=1">
+                Catalog
+              </Link>
+            </li>
+          </ul>
+        </div>
+        {location.pathname !== "/" && <SearchBar />}
+        <div>
+          {isLoggedIn ? (
+            <>
+              <Link to="/my-list">
+                <Button>My List</Button>
+              </Link>
+              <Button onClick={onLogoutHandler}>Sign out</Button>
+            </>
+          ) : (
+            <>
+              <Link to="/auth?mode=login">
+                <Button>Log in</Button>
+              </Link>
+              <Link to="/auth?mode=signup">
+                <Button>Sign up</Button>
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
     </header>
   );
 }

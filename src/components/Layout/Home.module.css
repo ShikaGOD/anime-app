@@ -29,32 +29,6 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .text {
-    width: 80%;
-    margin-top: 320px;
-    margin-left: auto; /* Updated: Margin auto for centering horizontally */
-    margin-right: auto;
-  }
-  .textContainer {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .text {
-    width: 100%;
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 320px) {
-  .text {
-    font-size: 20px;
-  }
-}
-
 .text button {
   cursor: pointer;
   font: inherit;

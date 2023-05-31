@@ -35,7 +35,7 @@
 
 .mainHeader div {
   display: flex;
-  /* gap: 10px; */
+  gap: 10px;
   font-size: 0.6em;
 }
 
@@ -91,6 +91,3 @@
 .searchbar::placeholder {
   color: #dad2d2;
 }
-
-
-
